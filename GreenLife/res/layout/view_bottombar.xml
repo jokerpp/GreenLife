@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/title_bar_height"
+    android:background="@color/white"
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal"
+    android:paddingBottom="0dip"
+    android:paddingTop="0dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="0dip"
+        android:background="@color/transparent"
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingLeft="0dip"
+        android:paddingRight="0dip"
+        android:paddingTop="5dip" >
+
+        <!-- tab bar -->
+
+        <LinearLayout
+            android:id="@+id/ll_item1"
+            style="@style/item_ll_bottom" >
+
+            <TextView
+                android:id="@+id/tv_item1"
+                style="@style/item_tv_bottombar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item2"
+            style="@style/item_ll_bottom" >
+
+            <TextView
+                android:id="@+id/tv_item2"
+                style="@style/item_tv_bottombar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item3"
+            style="@style/item_ll_bottom" >
+
+            <TextView
+                android:id="@+id/tv_item3"
+                style="@style/item_tv_bottombar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_item4"
+            style="@style/item_ll_bottom"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_item4"
+                style="@style/item_tv_bottombar" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

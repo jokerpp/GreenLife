@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="main_color">#28b04e</color>
+    
+    <color name="bg_topbar">#28b04e</color>
+    
+    <color name="bg_voice">#56000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="half_black">#77000000</color>
+    <color name="bg_title">#eb1584</color>
+    <color name="bg">#f5f5f5</color>
+    <color name="bg_index">#d4d4d4</color>
+  
+    
+    
+    <color name="txt_purple">#7786ed</color>
+    <color name="txt_red">#fa7264</color>
+    <color name="txt_black">#262626</color>
+    <color name="txt_gray">#999999</color>
+    <color name="txt_blue">#3bb1e2</color>
+    <color name="txt_orange">#fa8f03</color>
+    <color name="txt_green">#b1d79c</color>
+    <color name="txt_black_contact">#666666</color>
+    <!-- 联系人首字母颜色 -->
+    <color name="bg_alpha">#ebebeb</color>
+
+    <!-- 隐私设置通知字体颜色 -->
+    <color name="txt_notice_open">#ffa200</color>
+    <color name="txt_notice_close">#999999</color>
+    
+    <color name="divider_line">#cccccc</color>
+	<color  name="web_map_bg">#dddddd</color>    
+	
+	<color  name="left_menu_divider">#bababa</color>    
+	<color  name="left_menu_bg">#e9e9e9</color>   
+	 
+	<color  name="bill_money_add">#5eb4eb</color>    
+	<color  name="bill_money_des">#f8b551</color>  
+	
+	
+	<color name="divider_line_deep">#cccccc</color>
+	
+	<color name="detail_item_light">#f3f3f3</color>
+	<color name="detail_item_deep">#e6e6e6</color>
+    
+</resources>

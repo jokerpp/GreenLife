@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_index"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_titleBar"
+        style="@style/title_bar" >
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/title_bar_btn"
+            android:layout_alignParentLeft="true"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/btn_back_selector"
+            android:drawablePadding="5dip"
+            android:text="@string/txt_back"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_bar_text"
+            android:text="@string/app_name" />
+
+        <Button
+            android:id="@+id/btn_right"
+            style="@style/title_bar_btn"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:gravity="center_vertical|right"
+            android:minWidth="70dip"
+            android:paddingLeft="10dip"
+            android:textColor="@color/txt_gray"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <cn.crane.framework.view.carouselview.CarouselView
+                android:id="@+id/carouseView"
+                android:layout_width="match_parent"
+                android:layout_height="200dip" >
+            </cn.crane.framework.view.carouselview.CarouselView>
+
+            <cn.crane.framework.view.MyGridView
+                android:id="@+id/grid_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:horizontalSpacing="3dip"
+                android:padding="10dip"
+                android:cacheColorHint="@color/transparent"
+                  android:listSelector="@color/transparent"
+                android:numColumns="4"
+                android:background="@color/white"
+                android:layout_marginTop="3dip"
+                android:layout_marginBottom="3dip"
+                android:verticalSpacing="10dip" >
+            </cn.crane.framework.view.MyGridView>
+
+            <cn.crane.framework.view.MyListView
+                android:id="@+id/lv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="@color/transparent"
+                android:childDivider="@color/divider_line"
+                android:divider="@color/divider_line"
+                android:dividerHeight="1dip"
+                android:listSelector="@color/transparent" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

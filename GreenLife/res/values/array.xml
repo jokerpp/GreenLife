@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="viewItem">
+
+        <!-- Title -->
+        <attr name="main_title" format="integer" />
+        <!-- Right String -->
+        <attr name="right_str" format="integer" />
+        <!-- Right Icon -->
+        <attr name="right_icon" format="integer" />
+        <!-- Bottom_line -->
+        <attr name="bottom_line_visible" format="boolean" />
+        <!-- Arrow -->
+        <attr name="arrow_visible" format="boolean" />
+    </declare-styleable>
+
+    <!-- Grid Index Category -->
+    <string-array name="arr_grid_category">
+        <item>@string/index_category_shilingzhong</item>
+        <item>@string/index_category_youhui</item>
+        <item>@string/index_category_yuding</item>
+        <item>@string/index_category_meishi</item>
+        <item>@string/index_category_vegetables</item>
+        <item>@string/index_category_fruits</item>
+        <item>@string/index_category_grain</item>
+        <item>@string/index_category_seafood</item>
+        <item>@string/index_category_cookedfood</item>
+        <item>@string/index_category_drinks</item>
+        <item>@string/index_category_meat</item>
+        <item>@string/index_category_outdoor</item>
+    </string-array>
+    <!-- Index Article Category -->
+    <string-array name="arr_article_category">
+        <item>@string/index_article_shipu</item>
+        <item>@string/index_article_yisheng</item>
+        <item>@string/index_article_greenlife</item>
+        <item>@string/index_article_minsu</item>
+    </string-array>
+
+</resources>
