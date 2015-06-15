@@ -28,7 +28,37 @@
     <string name="txt_order">订单</string>
     <string name="txt_my">我的</string>
     <string name="txt_back">返回</string>
-    <string name="title_nerchant_list">商家列表</string>
+    <string name="title_merchant_list">商铺列表</string>
+    <string name="title_product_list">产品列表</string>
+    <string name="txt_make_order">下单</string>
+    <string name="txt_merchant_sleep">商铺休息中</string>
+    
+    
+      <string name="order_commit">提交订单</string>
+    <string name="order_pay_type">支付方式</string>
+    <string name="order_pay_type_default">货到付款</string>
+    <string name="order_pay_type_wechat">微信支付</string>
+    <string name="order_pay_type_alipay">支付宝支付</string>
+    <string name="order_send_time">送货时间</string>
+    <string name="order_send_time_now">立即送货</string>
+    <string name="order_send_mark">送货备注</string>
+    <string name="order_send_mark_hint">（选填）可输入特殊要求</string>
+    <string name="txt_coupon">代金券</string>
+    <string name="txt_coupon_tips">代金券不与其他优惠同享（立减优惠，新用户立减）</string>
+    <string name="txt_send_price">配送费</string>
+    <string name="txt_send_box_price">餐盒费</string>
+    <string name="txt_coupon_price">宅家代金券</string>
+    <string name="order_total" formatted="false">已经优惠:¥%s  总计:¥%s</string>
+    <string name="order_confirm">确认下单</string>
+    
+    <string name="pay_title">支付收银台</string>
+    <string name="pay_old_price">原价：</string>
+    <string name="pay_price">收付金额：</string>
+    <string name="pay_confirm">确认支付</string>
+    
+    <string name="search_hint">请输入关键字搜索</string>
+    
+    
     
     
 

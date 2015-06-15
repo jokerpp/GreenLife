@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top"
+    android:orientation="horizontal"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:paddingTop="10dip" >
+
+    <cn.crane.framework.view.smartimage.SmartImageView
+        android:id="@+id/iv_image"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test_index_image" />
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dip"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="XXX水果店"
+            android:textColor="@color/txt_black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="地址：天津市南开区..."
+            android:textColor="@color/txt_gray"
+            android:textSize="12sp" />
+        
+        <RatingBar
+                android:id="@+id/ratingbar"
+                style="@style/myRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:max="5"
+                android:numStars="5"
+                android:progress="3"
+                android:textColor="@color/txt_black"
+                android:textSize="0sp"
+                android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>

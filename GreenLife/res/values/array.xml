@@ -17,10 +17,10 @@
 
     <!-- Grid Index Category -->
     <string-array name="arr_grid_category">
-        <item>@string/index_category_shilingzhong</item>
+        <!-- <item>@string/index_category_shilingzhong</item>
         <item>@string/index_category_youhui</item>
         <item>@string/index_category_yuding</item>
-        <item>@string/index_category_meishi</item>
+        <item>@string/index_category_meishi</item> -->
         <item>@string/index_category_vegetables</item>
         <item>@string/index_category_fruits</item>
         <item>@string/index_category_grain</item>

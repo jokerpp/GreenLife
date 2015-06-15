@@ -9,12 +9,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.adapter.index.GridCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.ListArticleCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.PictureInfo;
 import cn.crane.application.greenlife.bean.index.ArticleCategoryItem;
 import cn.crane.application.greenlife.bean.index.GridCategoryItem;
+import cn.crane.application.greenlife.ui.merchant.FoodListActivity;
+import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
 import cn.crane.framework.fragment.BaseFragment;
 import cn.crane.framework.view.carouselview.CarouselItemInfo;
 import cn.crane.framework.view.carouselview.CarouselView;
@@ -29,6 +32,11 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	private CarouselView carouselView;
 	private GridView gvCategory;
 	private ListView lvArticle;
+	
+	private TextView tvShilingzhong;
+	private TextView tvYouhui;
+	private TextView tvYuding;
+	private TextView tvMeishi;
 	
 	private GridCatedoryAdapter gridCatedoryAdapter;
 	private ListArticleCatedoryAdapter articleCatedoryAdapter;
@@ -48,12 +56,23 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		carouselView = (CarouselView) findViewById(R.id.carouseView);
 		gvCategory = (GridView) findViewById(R.id.grid_category);
 		lvArticle = (ListView) findViewById(R.id.lv);
+		tvShilingzhong = (TextView) findViewById(R.id.tv_shilingzhong);
+		tvYouhui= (TextView) findViewById(R.id.tv_youhui);
+		tvYuding= (TextView) findViewById(R.id.tv_yuding);
+		tvMeishi = (TextView) findViewById(R.id.tv_meishi);
 	}
 
 	@Override
 	protected void bindViews() {
 		gvCategory.setOnItemClickListener(this);
 		gvCategory.setOnItemClickListener(this);
+		
+		tvShilingzhong.setOnClickListener(this);
+		tvYouhui.setOnClickListener(this);
+		tvYuding.setOnClickListener(this);
+		tvMeishi.setOnClickListener(this);
+		
+		carouselView.setOnItemListener(itemListener);
 	}
 
 	@Override
@@ -104,15 +123,27 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
+		switch (v.getId()) {
+		case R.id.tv_shilingzhong:
+		case R.id.tv_youhui:
+		case R.id.tv_yuding:
+		case R.id.tv_meishi:
+			MerchantListAtivity.show(getActivity());
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		Object object = parent.getItemAtPosition(position);
 		switch (parent.getId()) {
 		case R.id.grid_category:
+			MerchantListAtivity.show(getActivity());
+			break;
 		case R.id.lv:
 			
 			break;
@@ -122,4 +153,17 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		}
 	}
 
+	private CarouselView.OnItemListener itemListener = new CarouselView.OnItemListener() {
+		
+		@Override
+		public void onItemClick(CarouselItemInfo pictureInfo) {
+			FoodListActivity.show(getActivity());
+		}
+		
+		@Override
+		public void onItemChanged(int position) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 }

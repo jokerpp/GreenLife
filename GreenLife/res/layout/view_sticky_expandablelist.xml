@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+        >
+
+    <cn.crane.application.greenlife.view.sticky.CustomExpandableListView
+            android:id="@+id/lv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:childDivider="#dddddd"
+            android:divider="#dddddd"
+            android:dividerHeight="1dip"
+            android:fadingEdge="none"
+            android:groupIndicator="@null"
+            android:listSelector="@android:color/transparent" />
+
+    <TextView
+            android:id="@+id/tv_header"
+            android:text="@string/hello_world"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dip"
+            android:paddingRight="16dip"
+            android:paddingTop="@dimen/txt_food_title_margin_top"
+            android:paddingBottom="@dimen/txt_food_title_margin_top"
+            android:background="@color/web_map_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+</RelativeLayout>

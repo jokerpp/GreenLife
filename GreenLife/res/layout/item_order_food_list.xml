@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_height"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="10dip"
+    android:paddingLeft="0dip"
+    android:paddingRight="0dip"
+    android:paddingTop="10dip" >
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dip"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="南美小香蕉"
+        android:textColor="@color/txt_black"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/tv_num"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dip"
+        android:ellipsize="end"
+        android:singleLine="true"
+         android:gravity="center_vertical"
+        android:text="x1"
+        android:textColor="@color/txt_black"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dip"
+        android:ellipsize="end"
+        android:singleLine="true"
+         android:gravity="center_vertical"
+        android:text="¥12"
+        android:textColor="@color/txt_black"
+        android:textSize="14sp" />
+
+</LinearLayout>

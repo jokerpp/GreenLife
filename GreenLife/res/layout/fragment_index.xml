@@ -48,25 +48,112 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:background="@drawable/bg_corner_black"
+                android:drawableLeft="@drawable/icon_edit_search"
+                android:drawablePadding="5dip"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:hint="@string/search_hint"
+                android:minWidth="70dip"
+                android:paddingLeft="10dip"
+                android:singleLine="true"
+                android:textColor="@color/txt_gray"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
             <cn.crane.framework.view.carouselview.CarouselView
                 android:id="@+id/carouseView"
                 android:layout_width="match_parent"
                 android:layout_height="200dip" >
             </cn.crane.framework.view.carouselview.CarouselView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dip" >
+
+                <TextView
+                    android:id="@+id/tv_shilingzhong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dip"
+                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/index_category_shilingzhong"
+                    android:textColor="@color/txt_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_youhui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dip"
+                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/index_category_youhui"
+                    android:textColor="@color/txt_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_yuding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dip"
+                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/index_category_yuding"
+                    android:textColor="@color/txt_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_meishi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dip"
+                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/index_category_meishi"
+                    android:textColor="@color/txt_black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
             <cn.crane.framework.view.MyGridView
                 android:id="@+id/grid_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="3dip"
+                android:background="@color/white"
+                android:cacheColorHint="@color/transparent"
                 android:gravity="center"
                 android:horizontalSpacing="3dip"
-                android:padding="10dip"
-                android:cacheColorHint="@color/transparent"
-                  android:listSelector="@color/transparent"
+                android:listSelector="@color/transparent"
                 android:numColumns="4"
-                android:background="@color/white"
-                android:layout_marginTop="3dip"
-                android:layout_marginBottom="3dip"
+                android:padding="10dip"
                 android:verticalSpacing="10dip" >
             </cn.crane.framework.view.MyGridView>
 
