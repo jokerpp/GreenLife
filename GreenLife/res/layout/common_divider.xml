@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/myaccount_index_divider_height"
+    android:layout_marginLeft="@dimen/myaccount_index_paddingLeftRight"
+    android:layout_marginRight="@dimen/myaccount_index_paddingLeftRight"
+    android:background="@color/myaccount_divider_color" />

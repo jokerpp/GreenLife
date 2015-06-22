@@ -36,16 +36,10 @@
             android:visibility="gone" />
     </RelativeLayout>
 
-
-
-    <ListView
-        android:id="@+id/lv"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:cacheColorHint="@color/transparent"
-        android:childDivider="@color/divider_line"
-        android:divider="@color/divider_line"
-        android:dividerHeight="1dip"
-        android:listSelector="@color/transparent" />
+ <cn.crane.framework.utils.myaccount.PullToZoomScrollViewEx
+     android:id="@+id/scroll_view"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+    />
 
 </LinearLayout>

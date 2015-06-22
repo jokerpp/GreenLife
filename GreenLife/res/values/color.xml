@@ -44,5 +44,10 @@
 	
 	<color name="detail_item_light">#f3f3f3</color>
 	<color name="detail_item_deep">#e6e6e6</color>
+	
+	<!-- myaccount -->
+    <color name="myaccount_bg_color">#FFFFFFFF</color>
+    <color name="myaccount_divider_color">#FFDDDDDD</color>
+    <color name="myaccount_dividerMagin_color">#FFE8E8E8</color>
     
 </resources>

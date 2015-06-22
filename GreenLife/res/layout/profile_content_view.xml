@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/myaccount_bg_color">
+<include layout="@layout/common_divider_magin"/>
+<!-- 地址 -->  
+    <LinearLayout
+        android:id="@+id/myaccount_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_address"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_address" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="送餐地址"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_address"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout>
+  <include layout="@layout/common_divider"/>  
+<!-- 代金券 -->    
+     <LinearLayout
+        android:id="@+id/myaccount_voucher"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_voucher"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_ticket" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_voucher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="我的代金券"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_voucher"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout>
+ <include   layout="@layout/common_divider"/>  
+<!-- 我的退款 -->    
+     <LinearLayout
+        android:id="@+id/myaccount_drawback"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_drawback"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_drawback" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_drawback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="我的退款"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_drawback"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout>
+<!-- 2 secontion -->
+<include layout="@layout/common_divider_magin"/>
+<!-- 我的收藏 -->  
+    <LinearLayout
+        android:id="@+id/myaccount_collect"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_collect"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_collect" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="我的收藏"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_collect"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout>
+  <include layout="@layout/common_divider"/>  
+<!-- 我的评论 -->    
+     <LinearLayout
+        android:id="@+id/myaccount_comments"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_comments"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_comments" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="我的评论"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_comments"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout>
+ <include   layout="@layout/common_divider"/>  
+<!-- 修改密码-->    
+     <LinearLayout
+        android:id="@+id/myaccount_editpasswd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_edit"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_edit" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_editpasswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="修改密码"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_editpasswd"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout>  
+     <include   layout="@layout/common_divider"/>  
+    <!-- 个人信息-->    
+     <LinearLayout
+        android:id="@+id/myaccount_usrInfo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_usrInfo"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_guest" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_usrInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="个人信息"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+
+        <ImageView
+            android:id="@+id/myaccount_item_arrow_usrInfo"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/icon_forward" >
+        </ImageView>
+    </LinearLayout> 
+    <!-- section3 -->
+ <include layout="@layout/common_divider_magin"/> 
+ <LinearLayout
+        android:id="@+id/myaccount_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myaccount_index_item_phone_height"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
+        android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
+
+        <ImageView
+            android:id="@+id/myaccount_item_icon_phone"
+            android:layout_width="@dimen/myaccount_index_item_img_widthHeight"
+            android:layout_height="@dimen/myaccount_index_item_img_widthHeight"
+            android:src="@drawable/icon_phone" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/myaccount_item_text_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
+            android:text="客服   888-888-8888"
+            android:textColor="#FF28b04e"
+            android:textSize="@dimen/myaccount_index_item_textsize" />
+   
+     </LinearLayout> 
+      <include layout="@layout/common_divider_magin"/> 
+</LinearLayout>

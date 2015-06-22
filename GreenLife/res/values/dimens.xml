@@ -20,5 +20,15 @@
      
      
      <dimen name="txt_merchant_title">60dip</dimen>
+      <!-- myaccount -->
+    <dimen name="myaccount_index_item_height">40dp</dimen>
+    <dimen name="myaccount_index_paddingLeftRight">20dp</dimen>
+    <dimen name="myaccount_index_item_img_widthHeight">20dp</dimen>
+    <dimen name="myaccount_index_divider_height">1dp</dimen>
+    <dimen name="myaccount_index_item_text_paddingLeft">10dp</dimen>
+    <dimen name="myaccount_index_dividerMagin">10dp</dimen>
+	<dimen name="myaccount_index_item_phone_height">50dip</dimen>
+    <!-- text myaccount size -->
+    <dimen name="myaccount_index_item_textsize">16sp</dimen>
 
 </resources>
