@@ -71,6 +71,15 @@
     <string name="title_article_list">文章列表</string>
     <string name="title_article_detail">文章详情</string>
     
-    
+      <string name="login_username_hint">手机号/用户名/邮箱</string>
+    <string name="login_password_hint">密码</string>
+    <string name="login_text">登录</string>
+     <string name="register_text">注册</string>
+    <string name="login_forgetpassword">忘记密码?</string>
+    <string name="login_username_register">用户名</string>
+    <string name="login_passwordcheck_register">重新输入密码</string>
+	<string name="login_phone_register">手机号</string>
+	<string name="login_getCode_register">获取验证码</string>
+	<string name="login_direct_register">直接登录</string>
 
 </resources>

@@ -30,5 +30,10 @@
 	<dimen name="myaccount_index_item_phone_height">50dip</dimen>
     <!-- text myaccount size -->
     <dimen name="myaccount_index_item_textsize">16sp</dimen>
-
+  <!-- login -->
+       <dimen name="myaccount_login_paddingleftRight">10dp</dimen>
+      <dimen name="myaccount_login_item_height">45dp</dimen>
+       <dimen name="myaccount_login_item_magintop">10dp</dimen>
+       <dimen name="myaccount_login_item_imgwidthHeight">25dp</dimen>
+        <dimen name="myaccount_login_item_textsize">16sp</dimen>
 </resources>
