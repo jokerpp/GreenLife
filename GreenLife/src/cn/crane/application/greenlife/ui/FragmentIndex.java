@@ -16,6 +16,7 @@ import cn.crane.application.greenlife.adapter.index.ListArticleCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.PictureInfo;
 import cn.crane.application.greenlife.bean.index.ArticleCategoryItem;
 import cn.crane.application.greenlife.bean.index.GridCategoryItem;
+import cn.crane.application.greenlife.ui.article.ArticleListActivity;
 import cn.crane.application.greenlife.ui.merchant.FoodListActivity;
 import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
 import cn.crane.framework.fragment.BaseFragment;
@@ -65,7 +66,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	@Override
 	protected void bindViews() {
 		gvCategory.setOnItemClickListener(this);
-		gvCategory.setOnItemClickListener(this);
+		lvArticle.setOnItemClickListener(this);
 		
 		tvShilingzhong.setOnClickListener(this);
 		tvYouhui.setOnClickListener(this);
@@ -145,7 +146,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 			MerchantListAtivity.show(getActivity());
 			break;
 		case R.id.lv:
-			
+			ArticleListActivity.show(getActivity());
 			break;
 
 		default:

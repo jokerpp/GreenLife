@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import cn.crane.application.greenlife.ui.order.OrderConfirmActivity;
 import cn.crane.application.greenlife.view.ViewAddMinus;
 import cn.crane.application.greenlife.view.sticky.ViewStickyExpandableList;
 import cn.crane.application.greenlife.view.sticky.ViewStickyExpandableList.CallBack;
+import cn.crane.framework.activity.BaseActivity;
 import cn.crane.framework.fragment.BaseFragment;
 
 public class FragmentMeals extends BaseFragment implements OnItemClickListener, OnClickListener {
@@ -44,6 +46,8 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 	
 	private int iCount;
 	private int totalPrice;
+
+	private Button btnBack;
 	
 
 	@Override
@@ -62,6 +66,8 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 		llShopCar = (LinearLayout) findViewById(R.id.ll_shop_car);
 		tvTitle = (TextView) findViewById(R.id.tv_title);
 		
+		btnBack = (Button) findViewById(R.id.btn_back);
+		
 	}
 
 	@Override
@@ -69,6 +75,7 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 		tvBottomLeft.setOnClickListener(this);
 		tvBottomRight.setOnClickListener(this);
 		llShopCar.setOnClickListener(this);
+		btnBack.setOnClickListener(this);
 	}
 
 	@Override
@@ -131,6 +138,9 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.btn_back:
+			getActivity().finish();
+			break;
 		case R.id.tv_total_price:
 		case R.id.ll_shop_car:
 //			if(llGrey.getVisibility() == View.VISIBLE)
@@ -179,7 +189,7 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 		public void onChildCLicked(FoodItem foodItem) {
 			// TODO Auto-generated method stub
 //			FoodDetailActivity.show(getActivity(), foodItem, requestCode);
-
+			FoodDetailDialogFragment.show((BaseActivity) getActivity());
 		}
 		
 	};
@@ -236,6 +246,7 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 		@Override
 		public void onChildClicked(FoodItem foodItem) {
 //			FoodDetailActivity.show(getActivity(), foodItem, requestCode);
+			FoodDetailDialogFragment.show((BaseActivity) getActivity());
 		}
 	};
 	

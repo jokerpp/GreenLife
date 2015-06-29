@@ -13,7 +13,7 @@
     <cn.crane.framework.view.smartimage.SmartImageView
         android:id="@+id/iv_image"
         style="@style/index_item_product"
-        android:src="@drawable/icon_bottom_dingdan" />
+        android:src="@drawable/test_index_image" />
 
     <LinearLayout
         android:layout_width="0dip"

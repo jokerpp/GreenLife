@@ -58,7 +58,18 @@
     
     <string name="search_hint">请输入关键字搜索</string>
     
+       <string name="order_state">订单状态</string>
+    <string name="order_detail">订单详情</string>
+    <string name="order_state_commit">订单提交成功</string>
+    <string name="order_state_topay">待支付</string>
+    <string name="order_state_merchant">商家已经确认订单</string>
+    <string name="order_state_to_merhant">配送员正赶往餐厅</string>
+    <string name="order_state_sending">配送员已经取餐</string>
+    <string name="order_state_over">已送达，订单完成</string>
+    <string name="order_again">再来一单</string>
     
+    <string name="title_article_list">文章列表</string>
+    <string name="title_article_detail">文章详情</string>
     
     
 

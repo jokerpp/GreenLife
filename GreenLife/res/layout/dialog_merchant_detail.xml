@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:paddingTop="10dip" >
+
+    <cn.crane.framework.view.smartimage.SmartImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test_index_image" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dip"
+        android:layout_weight="1"
+        android:layout_marginTop="10dip"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="XXX水果店"
+            android:textColor="@color/txt_black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_marginTop="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="¥147"
+            android:textColor="@color/main_color"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_marginTop="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="商铺详情"
+            android:textColor="@color/txt_gray"
+            android:textSize="12sp" />
+        
+    </LinearLayout>
+
+</LinearLayout>

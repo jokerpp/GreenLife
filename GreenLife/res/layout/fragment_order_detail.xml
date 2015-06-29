@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_index"
+    android:orientation="vertical" >
+
+    <View style="@style/line_gray" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="0dip" >
+
+            <TextView
+                android:id="@+id/tv_merchant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:paddingTop="10dip"
+                android:text="必胜客（北苑店）"
+                android:textColor="@color/txt_black"
+                android:textSize="17sp" />
+
+            <View
+                style="@style/line_gray"
+                 android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip" />
+
+            <cn.crane.framework.view.MyListView
+                android:id="@+id/lv_foods"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="@color/transparent"
+                android:childDivider="@color/divider_line"
+                android:divider="@color/divider_line"
+                android:dividerHeight="1dip"
+                android:listSelector="@color/transparent"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:paddingTop="0dip" />
+
+            <View
+                style="@style/line_gray"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip" />
+
+            <TextView
+                android:id="@+id/tv_total_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:paddingBottom="10dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:paddingTop="10dip"
+                android:singleLine="true"
+                android:text="@string/order_total"
+                android:textColor="@color/main_color"
+                android:textSize="14sp" />
+
+            <View
+                style="@style/line_gray"
+                android:layout_height="10dip" />
+
+            <cn.crane.framework.view.MyListView
+                android:id="@+id/lv_detail"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="@color/transparent"
+                android:childDivider="@color/divider_line"
+                android:divider="@color/divider_line"
+                android:dividerHeight="1dip"
+                android:listSelector="@color/transparent"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:paddingTop="0dip" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_order_again"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/main_color"
+        android:gravity="center"
+        android:text="@string/order_again"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>

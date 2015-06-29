@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.adapter.ListOrderAdapter;
+import cn.crane.application.greenlife.ui.order.OrderDetailActivity;
 import cn.crane.framework.fragment.BaseFragment;
 
 /**
@@ -62,6 +63,7 @@ public class FragmentOrderList extends BaseFragment implements OnClickListener, 
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Object object = parent.getItemAtPosition(position);
+		OrderDetailActivity.show(getActivity());
 	}
 
 }
