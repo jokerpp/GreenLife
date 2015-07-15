@@ -11,7 +11,8 @@
     <color name="half_black">#77000000</color>
     <color name="bg_title">#eb1584</color>
     <color name="bg">#f5f5f5</color>
-    <color name="bg_index">#d4d4d4</color>
+ <!--    <color name="bg_index">#d4d4d4</color> -->
+    <color name="bg_index">#f1f1f1</color>
   
     
     

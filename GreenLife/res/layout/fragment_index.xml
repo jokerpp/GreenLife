@@ -87,7 +87,7 @@
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
                     android:drawablePadding="10dip"
-                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:drawableTop="@drawable/icon_shilingzhong"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:singleLine="true"
@@ -102,7 +102,7 @@
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
                     android:drawablePadding="10dip"
-                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:drawableTop="@drawable/icon_youhui"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:singleLine="true"
@@ -117,7 +117,7 @@
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
                     android:drawablePadding="10dip"
-                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:drawableTop="@drawable/icon_yuding"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:singleLine="true"
@@ -132,7 +132,7 @@
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
                     android:drawablePadding="10dip"
-                    android:drawableTop="@drawable/icon_index_meishiwaimai"
+                    android:drawableTop="@drawable/icon_meishi"
                     android:ellipsize="end"
                     android:gravity="center"
                     android:singleLine="true"
@@ -154,7 +154,7 @@
                 android:listSelector="@color/transparent"
                 android:numColumns="4"
                 android:padding="10dip"
-                android:verticalSpacing="10dip" >
+                android:verticalSpacing="20dip" >
             </cn.crane.framework.view.MyGridView>
 
             <cn.crane.framework.view.MyListView

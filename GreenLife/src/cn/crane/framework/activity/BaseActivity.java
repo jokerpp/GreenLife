@@ -23,10 +23,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
 
 /**
  * 
@@ -47,7 +49,10 @@ public abstract class BaseActivity extends FragmentActivity implements
 	protected int page = 0;
 	protected int pageCount = 10;
 	private SwipeBackLayout mSwipeBackLayout;
+	private LinearLayout llRootView;
+	private View loadingView;
 
+	public boolean isLoading = false;
 	// public Class<BaseActivity>[] activitiesDotCheckToken = {
 	// LoginActivity.class, RegisterActivity.class };
 
@@ -57,7 +62,14 @@ public abstract class BaseActivity extends FragmentActivity implements
 		app = (App) getApplicationContext();
 		TAG = getClass().getSimpleName();
 		ActivityMannager.getInstance().addActivity(this);
-		setContentView(getLayoutId());
+//		setContentView(getLayoutId());
+		setContentView(R.layout.ui_base);
+		llRootView = (LinearLayout) findViewById(R.id.ll_rootView);
+		if (getLayoutId() != 0) {
+			LayoutInflater.from(this).inflate(getLayoutId(), llRootView);
+		}
+		loadingView = findViewById(R.id.view_loading);
+		loadingView.setVisibility(View.GONE);
 
 		
 		// addMainBtn();
@@ -159,19 +171,20 @@ public abstract class BaseActivity extends FragmentActivity implements
 	 */
 	public void displayLoadingDlg(String sMsg) {
 
-		if (progressDlg != null && progressDlg.isShowing()) {
-			progressDlg.setMessage(sMsg);
-		} else {
-			progressDlg = new ProgressDialog(this);
-			progressDlg.setMessage(sMsg);
-			progressDlg.setIndeterminate(true);
-			progressDlg.setCancelable(true);
-			progressDlg.show();
+//		if (progressDlg != null && progressDlg.isShowing()) {
+//			progressDlg.setMessage(sMsg);
+//		} else {
+//			progressDlg = new ProgressDialog(this);
+//			progressDlg.setMessage(sMsg);
+//			progressDlg.setIndeterminate(true);
+//			progressDlg.setCancelable(true);
+//			progressDlg.show();
+//		}
+		if(loadingView != null)
+		{
+			loadingView.setVisibility(View.VISIBLE);
+			isLoading = true;
 		}
-		// if(loadingView != null)
-		// {
-		// loadingView.showLoading(sMsg);
-		// }
 	}
 
 	/**
@@ -189,20 +202,25 @@ public abstract class BaseActivity extends FragmentActivity implements
 	 * @param listener
 	 */
 	public void setOnDismissListener(OnCancelListener listener) {
-		if (progressDlg != null)
-			progressDlg.setOnCancelListener(listener);
+//		if (progressDlg != null)
+//			progressDlg.setOnCancelListener(listener);
 	}
 
 	/**
 	 * Dismiss the loading dialog
 	 */
 	public void dismissLoadingDlg() {
-		if (progressDlg != null && progressDlg.isShowing())
-			progressDlg.cancel();
+//		if (progressDlg != null && progressDlg.isShowing())
+//			progressDlg.cancel();
 		// if(loadingView != null)
 		// {
 		// loadingView.dismissLoading();
 		// }
+		if(loadingView != null)
+		{
+			loadingView.setVisibility(View.GONE);
+			isLoading = false;
+		}
 	}
 
 	/**
@@ -337,6 +355,12 @@ public abstract class BaseActivity extends FragmentActivity implements
 			}
 		}
 	};
+	
+	public void setVisibleForView(View view, boolean isVisible) {
+		if (view != null) {
+			view.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+		}
+	}
 	
 	
 	public static Intent createIntent(Context context,Class<? extends BaseActivity> cls) {

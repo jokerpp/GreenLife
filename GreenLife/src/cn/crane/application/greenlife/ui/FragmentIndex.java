@@ -89,11 +89,15 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	
 	private void loadData() {
 		String [] arrGrids = getResources().getStringArray(R.array.arr_grid_category);
+		int [] arrIcons = new int[arrGrids.length];
+		arrIcons = new int []{R.drawable.icon_shucai,R.drawable.icon_shuiguo,R.drawable.icon_liangyou
+				,R.drawable.icon_seafood,R.drawable.icon_index_meishiwaimai,R.drawable.icon_drink
+				,R.drawable.icon_eggs,R.drawable.icon_yewei};
 		arrGridCategoryItems.clear();
 		for(int i = 0;i< arrGrids.length;i++)
 		{
 			GridCategoryItem item = new GridCategoryItem();
-			item.setIconResId(R.drawable.icon_index_meishiwaimai);
+			item.setIconResId(arrIcons[i]);
 			item.setTxt(arrGrids[i]);
 			arrGridCategoryItems.add(item);
 		}

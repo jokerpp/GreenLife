@@ -4,9 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import cn.crane.application.greenlife.App;
+import cn.crane.application.greenlife.R;
 import cn.crane.framework.activity.BaseActivity;
-
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
 /**
  * 
  * @author Ruifeng.yu  Email:xyyh0116@aliyun.com
@@ -30,12 +30,21 @@ public abstract class BaseFragment extends Fragment {
 	// pageCount
 	protected int page = 0;
 	protected int pageCount = 10;
+	private LinearLayout rootContent;
+	private View loadingView;
+	
+	public boolean isLoading = false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		rootView = inflater.inflate(getLayoutId(), null);
 		TAG = getClass().getSimpleName();
+		
+		rootView = inflater.inflate(R.layout.ui_base, null);
+		rootContent = (LinearLayout) rootView.findViewById(R.id.ll_rootView);
+		inflater.inflate(getLayoutId(), rootContent);
+		loadingView = rootView.findViewById(R.id.view_loading);
+		dismissLoadingDlg();
 		return rootView;
 	}
 
@@ -82,10 +91,16 @@ public abstract class BaseFragment extends Fragment {
 	 *            the message to display
 	 */
 	public void displayLoadingDlg(String sMsg) {
+		boolean loading = false;
 		if(getActivity() instanceof BaseActivity)
 		{
-			((BaseActivity)getActivity()).displayLoadingDlg(sMsg);
+			loading = ((BaseActivity)getActivity()).isLoading;
 		}
+			if(!loading && loadingView != null)
+			{
+				loadingView.setVisibility(View.VISIBLE);
+				isLoading = true;
+			}
 //		if (progressDlg != null && progressDlg.isShowing()) {
 //			progressDlg.setMessage(sMsg);
 //		} else {
@@ -95,6 +110,7 @@ public abstract class BaseFragment extends Fragment {
 //			progressDlg.setCancelable(true);
 //			progressDlg.show();
 //		}
+		
 	}
 
 	/**
@@ -113,10 +129,18 @@ public abstract class BaseFragment extends Fragment {
 	public void dismissLoadingDlg() {
 		if(getActivity() instanceof BaseActivity)
 		{
-			((BaseActivity)getActivity()).dismissLoadingDlg();
+			if(!isLoading)
+			{
+				((BaseActivity)getActivity()).dismissLoadingDlg();
+			}
 		}
 //		if (progressDlg != null && progressDlg.isShowing())
 //			progressDlg.cancel();
+		
+		if(loadingView != null)
+		{
+			loadingView.setVisibility(View.GONE);
+		}
 
 	}
 
@@ -141,5 +165,11 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+	}
+	
+	public void setVisibleForView(View view, boolean isVisible) {
+		if (view != null) {
+			view.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+		}
 	}
 }
