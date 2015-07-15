@@ -1,6 +1,13 @@
 package cn.crane.application.greenlife.ui.article;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.alibaba.fastjson.JSONArray;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -10,6 +17,12 @@ import android.widget.TextView;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.adapter.article.ListArticleAdapter;
 import cn.crane.application.greenlife.adapter.merchant.ListMerchantAdapter;
+import cn.crane.application.greenlife.api.API;
+import cn.crane.application.greenlife.api.API_Contant;
+import cn.crane.application.greenlife.api.Task_Post;
+import cn.crane.application.greenlife.model.item.NewsItem;
+import cn.crane.application.greenlife.model.result.RE_getTopNews;
+import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
 import cn.crane.framework.activity.BaseActivity;
 
 /**
@@ -24,6 +37,11 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 
 	private ListView lv;
 	private ListArticleAdapter adapter;
+	private List<NewsItem> arrNewsItems = new ArrayList<NewsItem>();
+	
+	private Task_Post task_Post_getTopNews;
+	
+	private String type;
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
@@ -41,7 +59,7 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 	protected void bindViews() {
 		btnBack.setOnClickListener(this);
 
-		adapter = new ListArticleAdapter(this, null);
+		adapter = new ListArticleAdapter(this, arrNewsItems);
 //		adapter.setOnItemClickListener(onItemClickListener);
 		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(this);
@@ -49,8 +67,8 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 
 	@Override
 	protected void init() {
-		// TODO Auto-generated method stub
-
+		type = getIntent().getStringExtra(API_Contant.TYPE);
+		getTopNews();
 	}
 	
 	@Override
@@ -67,6 +85,42 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 		}
 	}
 	
+	private void getTopNews() {
+//		项目编号（用户类型）	zjId	必填	String	1-用户、2-配送、3-商户
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("zjId", "1");
+		map.put("type", type);
+		Task_Post.clearTask(task_Post_getTopNews);
+		task_Post_getTopNews = new Task_Post(map, API.API_getTopNews,
+				new Task_Post.OnPostEndListener() {
+			
+			@Override
+			public void onPostEnd(String sResult) {
+				RE_getTopNews result = new RE_getTopNews();
+				try {
+					result = JSONArray.parseObject(sResult,
+							RE_getTopNews.class);
+					if(result.isSuccess())
+					{
+						refreshTopNewsUI(result);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		task_Post_getTopNews.execute();
+	}
+	
+	protected void refreshTopNewsUI(RE_getTopNews result) {
+		if(result != null)
+		{
+			arrNewsItems.clear();
+			arrNewsItems.addAll(result.getResultList());
+			adapter.notifyDataSetChanged();
+		}
+	}
+
 	private ListMerchantAdapter.OnItemClickListener onItemClickListener = new ListMerchantAdapter.OnItemClickListener() {
 
 		@Override
@@ -79,12 +133,25 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Object object = parent.getItemAtPosition(position);
-		ArticleDetailActivity.show(this);
+		if(object instanceof NewsItem)
+		{
+			ArticleDetailActivity.show(this,((NewsItem)object).getNewsToken());
+		}
+	
 		
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Task_Post.clearTask(task_Post_getTopNews);
+	}
 
-	public static void show(Context context) {
-		context.startActivity(createIntent(context, ArticleListActivity.class));
+	
+	public static void show(Context context ,String type) {
+		Intent intent = createIntent(context, ArticleListActivity.class);
+		intent.putExtra(API_Contant.TYPE, type);
+		context.startActivity(intent);
 	}
 
 }

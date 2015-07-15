@@ -14,6 +14,7 @@ import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.adapter.index.GridCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.ListArticleCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.PictureInfo;
+import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.bean.index.ArticleCategoryItem;
 import cn.crane.application.greenlife.bean.index.GridCategoryItem;
 import cn.crane.application.greenlife.ui.article.ArticleListActivity;
@@ -93,12 +94,15 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		arrIcons = new int []{R.drawable.icon_shucai,R.drawable.icon_shuiguo,R.drawable.icon_liangyou
 				,R.drawable.icon_seafood,R.drawable.icon_index_meishiwaimai,R.drawable.icon_drink
 				,R.drawable.icon_eggs,R.drawable.icon_yewei};
+		
+		
 		arrGridCategoryItems.clear();
 		for(int i = 0;i< arrGrids.length;i++)
 		{
 			GridCategoryItem item = new GridCategoryItem();
 			item.setIconResId(arrIcons[i]);
 			item.setTxt(arrGrids[i]);
+			item.setType(API_Contant.arrMerchantTYpes[i]);
 			arrGridCategoryItems.add(item);
 		}
 		gridCatedoryAdapter.notifyDataSetChanged();
@@ -111,6 +115,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 			ArticleCategoryItem item = new ArticleCategoryItem();
 			item.setTxt(arrArticles[i]);
 			item.setBgColor(colors[i]);
+			item.setType(API_Contant.arrArticleTypes[i]);
 			arrArticleCategoryItems.add(item);
 		}
 		articleCatedoryAdapter.notifyDataSetChanged();
@@ -130,10 +135,16 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_shilingzhong:
+			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_SHILINGZHONG);
+			break;
 		case R.id.tv_youhui:
+			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_YOUHUI);
+			break;
 		case R.id.tv_yuding:
+			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_YUDING);
+			break;
 		case R.id.tv_meishi:
-			MerchantListAtivity.show(getActivity());
+			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_MEISHI);
 			break;
 
 		default:
@@ -147,10 +158,16 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		Object object = parent.getItemAtPosition(position);
 		switch (parent.getId()) {
 		case R.id.grid_category:
-			MerchantListAtivity.show(getActivity());
+			if(object instanceof GridCategoryItem)
+			{
+				MerchantListAtivity.show(getActivity(),((GridCategoryItem)object).getType());
+			}
 			break;
 		case R.id.lv:
-			ArticleListActivity.show(getActivity());
+			if(object instanceof ArticleCategoryItem)
+			{
+				ArticleListActivity.show(getActivity(),((ArticleCategoryItem)object).getType());
+			}
 			break;
 
 		default:

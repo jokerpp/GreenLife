@@ -13,6 +13,8 @@ public class ArticleCategoryItem {
 
 	private String txt;
 	
+	private String type;
+	
 	public ArticleCategoryItem() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,6 +49,14 @@ public class ArticleCategoryItem {
 
 	public void setTxt(String txt) {
 		this.txt = txt;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

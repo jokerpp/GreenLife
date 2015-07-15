@@ -11,6 +11,8 @@ public class GridCategoryItem {
 	private int iconResId;
 	
 	private String txt;
+	
+	private String type;
 
 	public GridCategoryItem() {
 		// TODO Auto-generated constructor stub
@@ -38,6 +40,14 @@ public class GridCategoryItem {
 
 	public void setTxt(String txt) {
 		this.txt = txt;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }
