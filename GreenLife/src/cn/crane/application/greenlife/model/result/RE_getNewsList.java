@@ -12,7 +12,7 @@ import cn.crane.application.greenlife.model.item.NewsItem;
  * @version Create Time：Jun 23, 2015 10:36:14 PM
  * 
  */
-public class RE_getTopNews extends Result {
+public class RE_getNewsList extends Result {
 
 	/**
 	 * 

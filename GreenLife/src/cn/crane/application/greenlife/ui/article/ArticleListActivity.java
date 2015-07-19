@@ -21,7 +21,7 @@ import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.model.item.NewsItem;
-import cn.crane.application.greenlife.model.result.RE_getTopNews;
+import cn.crane.application.greenlife.model.result.RE_getNewsList;
 import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
 import cn.crane.framework.activity.BaseActivity;
 
@@ -68,7 +68,7 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 	@Override
 	protected void init() {
 		type = getIntent().getStringExtra(API_Contant.TYPE);
-		getTopNews();
+		getNewsList();
 	}
 	
 	@Override
@@ -85,21 +85,24 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 		}
 	}
 	
-	private void getTopNews() {
-//		项目编号（用户类型）	zjId	必填	String	1-用户、2-配送、3-商户
+	private void getNewsList() {
+//		新闻类型	newsType	必填	String
+//		请求页码	pageIndex		Int
+//		每页记录	pageSize		Int
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("zjId", "1");
-		map.put("type", type);
+		map.put("newsType", type);
+		map.put("pageIndex", "0");
+		map.put("pageSize", "10");
 		Task_Post.clearTask(task_Post_getTopNews);
-		task_Post_getTopNews = new Task_Post(map, API.API_getTopNews,
+		task_Post_getTopNews = new Task_Post(map, API.API_getNewsList,
 				new Task_Post.OnPostEndListener() {
 			
 			@Override
 			public void onPostEnd(String sResult) {
-				RE_getTopNews result = new RE_getTopNews();
+				RE_getNewsList result = new RE_getNewsList();
 				try {
 					result = JSONArray.parseObject(sResult,
-							RE_getTopNews.class);
+							RE_getNewsList.class);
 					if(result.isSuccess())
 					{
 						refreshTopNewsUI(result);
@@ -112,7 +115,7 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 		task_Post_getTopNews.execute();
 	}
 	
-	protected void refreshTopNewsUI(RE_getTopNews result) {
+	protected void refreshTopNewsUI(RE_getNewsList result) {
 		if(result != null)
 		{
 			arrNewsItems.clear();

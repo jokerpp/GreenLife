@@ -79,6 +79,8 @@ public class API {
 	public static final String API_getTopNews = "zj/json/getTopNews.action";
 	public static final String API_getNewsDetails = "zj/json/getNewsDetails.action";
 	
+	public static final String API_getNewsList = "zj/json/getNewsList.action";
+	
 	//配送员
 	public static final String API_getNearbyOrdersList = "zj/json/getNearbyOrdersList.action";
 	public static final String API_getDeliveryerOrdersList = "zj/json/getDeliveryerOrdersList.action";

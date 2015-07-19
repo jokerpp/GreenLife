@@ -3,10 +3,15 @@ package cn.crane.application.greenlife.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,6 +45,8 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	private TextView tvYuding;
 	private TextView tvMeishi;
 	
+	private EditText et_search;
+	
 	private GridCatedoryAdapter gridCatedoryAdapter;
 	private ListArticleCatedoryAdapter articleCatedoryAdapter;
 	
@@ -62,6 +69,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		tvYouhui= (TextView) findViewById(R.id.tv_youhui);
 		tvYuding= (TextView) findViewById(R.id.tv_yuding);
 		tvMeishi = (TextView) findViewById(R.id.tv_meishi);
+		et_search = (EditText) findViewById(R.id.et_search);
 	}
 
 	@Override
@@ -75,8 +83,46 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		tvMeishi.setOnClickListener(this);
 		
 		carouselView.setOnItemListener(itemListener);
+		
+		et_search.addTextChangedListener(textWatcher);
+		et_search.setOnKeyListener(onKeyListener);
 	}
+	
+	private TextWatcher textWatcher = new TextWatcher() {
+		
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void afterTextChanged(Editable s) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 
+	private OnKeyListener onKeyListener = new OnKeyListener() {
+		
+		@Override
+		public boolean onKey(View v, int keyCode, KeyEvent event) {
+			if(keyCode == KeyEvent.KEYCODE_ENTER)
+			{
+				String key = et_search.getText().toString().trim();
+				MerchantListAtivity.show(getActivity(), key);
+			}
+			return false;
+		}
+	};
+	
 	@Override
 	protected void init() {
 		gridCatedoryAdapter = new GridCatedoryAdapter(getActivity(), arrGridCategoryItems);
