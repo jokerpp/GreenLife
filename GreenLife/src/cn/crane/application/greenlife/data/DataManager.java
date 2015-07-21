@@ -1,20 +1,12 @@
 package cn.crane.application.greenlife.data;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.text.TextUtils;
-import android.widget.EditText;
-
-import cn.crane.application.greenlife.App;
 import cn.crane.application.greenlife.api.API;
-import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.model.Result;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
-
 import com.alibaba.fastjson.JSONArray;
 
 

@@ -138,7 +138,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		String [] arrGrids = getResources().getStringArray(R.array.arr_grid_category);
 		int [] arrIcons = new int[arrGrids.length];
 		arrIcons = new int []{R.drawable.icon_shucai,R.drawable.icon_shuiguo,R.drawable.icon_liangyou
-				,R.drawable.icon_seafood,R.drawable.icon_index_meishiwaimai,R.drawable.icon_drink
+				,R.drawable.icon_seafood,R.drawable.icon_shushi,R.drawable.icon_drink
 				,R.drawable.icon_eggs,R.drawable.icon_yewei};
 		
 		

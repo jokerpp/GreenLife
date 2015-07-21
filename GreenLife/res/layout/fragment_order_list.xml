@@ -36,16 +36,54 @@
             android:visibility="gone" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@color/transparent"
+            android:childDivider="@color/divider_line"
+            android:divider="@color/divider_line"
+            android:dividerHeight="1dip"
+            android:listSelector="@color/transparent" />
 
-    <ListView
-        android:id="@+id/lv"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:cacheColorHint="@color/transparent"
-        android:childDivider="@color/divider_line"
-        android:divider="@color/divider_line"
-        android:dividerHeight="1dip"
-        android:listSelector="@color/transparent" />
+        <LinearLayout
+            android:id="@+id/ll_need_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_head_logo" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                android:textColor="@color/txt_black"
+                android:text="@string/order_need_login"
+              />
+            
+              <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/bg_login_register_red"
+                    android:gravity="center"
+                    android:minWidth="150dip"
+                    android:text="@string/txt_login_register"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+            
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

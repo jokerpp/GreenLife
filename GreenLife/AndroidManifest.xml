@@ -136,7 +136,7 @@
     
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo_144"
+        android:icon="@drawable/icon_144"
         android:label="@string/app_name"
         android:name="cn.crane.application.greenlife.App"
         android:theme="@style/AppTheme" >
