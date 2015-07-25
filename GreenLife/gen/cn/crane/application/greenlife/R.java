@@ -1354,7 +1354,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int shadow_bottom=0x7f020094;
         public static final int shadow_left=0x7f020095;
         public static final int shadow_right=0x7f020096;
-        public static final int test_index_image=0x7f020097;
+        public static final int splash=0x7f020097;
+        public static final int test_index_image=0x7f020098;
     }
     public static final class id {
         public static final int action_bar=0x7f09002f;

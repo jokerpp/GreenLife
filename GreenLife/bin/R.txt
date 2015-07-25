@@ -371,7 +371,8 @@ int drawable shade_bg 0x7f020093
 int drawable shadow_bottom 0x7f020094
 int drawable shadow_left 0x7f020095
 int drawable shadow_right 0x7f020096
-int drawable test_index_image 0x7f020097
+int drawable splash 0x7f020097
+int drawable test_index_image 0x7f020098
 int id action_bar 0x7f09002f
 int id action_bar_activity_content 0x7f090001
 int id action_bar_container 0x7f09002e

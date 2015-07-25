@@ -6,6 +6,7 @@
     android:paddingTop="80dip"
     android:paddingBottom="80dip"
     android:gravity="center"
+    android:background="@drawable/splash"
     android:orientation="vertical" >
 
     <ImageView
@@ -13,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
+        android:visibility="gone"
         android:src="@drawable/logo_splash" />
 
     <TextView
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dip"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:scaleType="centerInside" />
 
 </LinearLayout>
