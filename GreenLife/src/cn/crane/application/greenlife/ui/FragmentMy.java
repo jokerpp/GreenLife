@@ -8,8 +8,13 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
+import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
 import cn.crane.application.greenlife.ui.myaccount.RegisterActivity;
+import cn.crane.application.greenlife.ui.myaccount.ResetPasswordActivity;
+import cn.crane.application.greenlife.ui.myaccount.address.MyAddressActivity;
+import cn.crane.application.greenlife.ui.myaccount.collect.MyCollectAtivity;
+import cn.crane.application.greenlife.ui.myaccount.comment.MyCommentsAtivity;
 import cn.crane.framework.fragment.BaseFragment;
 import cn.crane.framework.utils.myaccount.PullToZoomScrollViewEx;
 
@@ -18,10 +23,16 @@ import cn.crane.framework.utils.myaccount.PullToZoomScrollViewEx;
  * @version Create Time：Jun 8, 2015 11:38:46 PM
  * 
  */
-public class FragmentMy extends BaseFragment {
+public class FragmentMy extends BaseFragment implements OnClickListener {
 	private PullToZoomScrollViewEx scrollView;
 	private TextView login;
 	private TextView register;
+	
+	
+	private LinearLayout myaccount_address;
+	private LinearLayout myaccount_collect;
+	private LinearLayout myaccount_comments;
+	private LinearLayout myaccount_editpasswd;
 
 	@Override
 	protected int getLayoutId() {
@@ -35,6 +46,11 @@ public class FragmentMy extends BaseFragment {
 		this.loadViewForCode();
 		scrollView = (PullToZoomScrollViewEx) this
 				.findViewById(R.id.scroll_view);
+		
+		myaccount_address = (LinearLayout) findViewById(R.id.myaccount_address);
+		myaccount_collect = (LinearLayout) findViewById(R.id.myaccount_collect);
+		myaccount_comments = (LinearLayout) findViewById(R.id.myaccount_comments);
+		myaccount_editpasswd = (LinearLayout) findViewById(R.id.myaccount_editpasswd);
 	}
 
 	@Override
@@ -50,6 +66,11 @@ public class FragmentMy extends BaseFragment {
 				mScreenWidth, (int) (9.0F * (mScreenWidth / 16.0F)));
 
 		scrollView.setHeaderLayoutParams(localObject);
+		
+		myaccount_address.setOnClickListener(this);
+		myaccount_collect.setOnClickListener(this);
+		myaccount_comments.setOnClickListener(this);
+		myaccount_editpasswd.setOnClickListener(this);
 
 		login.setOnClickListener(new OnClickListener() {
 
@@ -93,6 +114,43 @@ public class FragmentMy extends BaseFragment {
 		scrollView.setZoomView(zoomView);
 		scrollView.setScrollContentView(conentView);
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.myaccount_address:
+			if(!DataManager.checkLogin(getActivity()))
+			{
+				return;
+			}
+			MyAddressActivity.show(getActivity(),0,MyAddressActivity.TYPE_VIEW);
+			break;
+		case R.id.myaccount_collect:
+			if(!DataManager.checkLogin(getActivity()))
+			{
+				return;
+			}
+			MyCollectAtivity.show(getActivity());
+			break;
+		case R.id.myaccount_comments:
+			if(!DataManager.checkLogin(getActivity()))
+			{
+				return;
+			}
+			MyCommentsAtivity.show(getActivity());
+			break;
+		case R.id.myaccount_editpasswd:
+			if(!DataManager.checkLogin(getActivity()))
+			{
+				return;
+			}
+			ResetPasswordActivity.show(getActivity());
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

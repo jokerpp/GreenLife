@@ -1,129 +1,209 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_index"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/ll_titleBar"
+        style="@style/title_bar" >
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/title_bar_btn"
+            android:layout_alignParentLeft="true"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/btn_back_selector"
+            android:text="@string/txt_back"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_bar_text"
+            android:layout_centerInParent="true"
+            android:text="@string/title_product_list"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_right"
+            style="@style/title_bar_btn"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:gravity="center_vertical|right"
+            android:minWidth="70dip"
+            android:paddingLeft="10dip"
+            android:textColor="@color/txt_gray"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bg_index"
         android:orientation="vertical" >
 
-        <RelativeLayout
-            android:id="@+id/ll_titleBar"
-            style="@style/title_bar" >
-
-            <Button
-                android:id="@+id/btn_back"
-                style="@style/title_bar_btn"
-                android:layout_alignParentLeft="true"
-                android:background="@color/transparent"
-                android:drawableLeft="@drawable/btn_back_selector"
-                android:text="@string/txt_back"
-                android:textColor="@color/white"
-                android:visibility="visible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/tv_title"
-                style="@style/title_bar_text"
-                android:layout_centerInParent="true"
-                android:text="@string/title_product_list"
-                android:textColor="@color/white"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/btn_right"
-                style="@style/title_bar_btn"
-                android:layout_alignParentRight="true"
-                android:background="@color/transparent"
-                android:gravity="center_vertical|right"
-                android:minWidth="70dip"
+                android:id="@+id/tv_tips"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#fffbde"
+                android:drawablePadding="5dip"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:paddingBottom="5dip"
                 android:paddingLeft="10dip"
-                android:textColor="@color/txt_gray"
-                android:visibility="gone" />
+                android:paddingRight="10dip"
+                android:paddingTop="5dip"
+                android:singleLine="true"
+                android:text="detail" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <ListView
+                    android:id="@+id/lv_category"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@color/txt_gray"
+                    android:dividerHeight="0.5dip"
+                    android:listSelector="@android:color/transparent" >
+                </ListView>
+
+                <View
+                    android:layout_width="10dip"
+                    android:layout_height="match_parent"
+                    android:background="@color/white" />
+
+                <cn.crane.application.greenlife.view.sticky.ViewStickyExpandableList
+                    android:id="@+id/view_stickyList"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:orientation="horizontal" >
+            android:id="@+id/ll_grey"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@color/txt_black"
+            android:clickable="true"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_pop_select_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dip"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dip"
+                android:background="@color/bg_index"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip" >
+
+                <TextView
+                    android:id="@+id/tv_pop_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/txt_shop_car" />
+
+                <TextView
+                    android:id="@+id/tv_pop_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/txt_shop_car_clear" />
+            </RelativeLayout>
 
             <ListView
-                android:id="@+id/lv_category"
-                android:layout_width="0dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
+                android:id="@+id/lv_food_select"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:cacheColorHint="@android:color/transparent"
-                android:divider="@color/txt_gray"
+                android:divider="@color/bg_index"
                 android:dividerHeight="0.5dip"
                 android:listSelector="@android:color/transparent" >
             </ListView>
-
-            <View
-                android:layout_width="10dip"
-                android:layout_height="match_parent"
-                android:background="@color/white" />
-
-            <cn.crane.application.greenlife.view.sticky.ViewStickyExpandableList
-                android:id="@+id/view_stickyList"
-                android:layout_width="0dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="2" />
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dip"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/tv_total_price"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/txt_black"
-            android:gravity="center"
-            android:text="共¥33.4"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:layout_height="50dip"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/tv_choose_ok"
+            <TextView
+                android:id="@+id/tv_total_price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/txt_black"
+                android:gravity="center"
+                android:text="共¥33.4"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_choose_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/main_color"
+                android:gravity="center"
+                android:minWidth="120dip"
+                android:text="@string/txt_food_choose_ok"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_car"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/main_color"
-            android:gravity="center"
-            android:minWidth="120dip"
-            android:text="@string/txt_make_order"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="25dip"
+            android:background="@drawable/icon_shop_car"
+            android:gravity="right|top" >
 
-    <LinearLayout
-        android:id="@+id/ll_shop_car"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="25dip"
-        android:background="@drawable/icon_shop_car"
-        android:gravity="right|top" >
+            <TextView
+                android:id="@+id/tv_total_count"
+                android:layout_width="17dip"
+                android:layout_height="17dip"
+                android:layout_gravity="right|top"
+                android:background="@drawable/icon_number_bg"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="2"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_total_count"
-            android:layout_width="17dip"
-            android:layout_height="17dip"
-            android:layout_gravity="right|top"
-            android:background="@drawable/icon_number_bg"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:singleLine="true"
-            android:text="2"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

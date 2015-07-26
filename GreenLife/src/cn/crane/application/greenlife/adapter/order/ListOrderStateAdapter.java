@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
+import cn.crane.application.greenlife.model.item.OrderStateItem;
 import cn.crane.framework.adapter.CommonAdapter;
 
 /**
@@ -16,18 +17,18 @@ import cn.crane.framework.adapter.CommonAdapter;
  * @version Create Time：Jun 16, 2015 10:00:44 PM
  * 
  */
-public class ListOrderStateAdapter extends CommonAdapter<String> {
+public class ListOrderStateAdapter extends CommonAdapter<OrderStateItem> {
 
-	public ListOrderStateAdapter(Context context, List<String> list) {
+	public ListOrderStateAdapter(Context context, List<OrderStateItem> list) {
 		super(context, list);
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return 10;
-	}
+//	@Override
+//	public int getCount() {
+//		// TODO Auto-generated method stub
+//		return 10;
+//	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -56,6 +57,12 @@ public class ListOrderStateAdapter extends CommonAdapter<String> {
 			holder.line_top.setVisibility(View.VISIBLE);
 			holder.line_bottom.setVisibility(View.VISIBLE);
 		}
+		
+		OrderStateItem item = (OrderStateItem) getItem(position);
+		if(item != null)
+		{
+			holder.setData(item);
+		}
 		return convertView;
 
 	}
@@ -80,6 +87,14 @@ public class ListOrderStateAdapter extends CommonAdapter<String> {
 	            tv_time = (TextView) root.findViewById(R.id.tv_time);
 	            tv_detail = (TextView) root.findViewById(R.id.tv_detail);
 	        }
+	        
+	        public void setData(OrderStateItem item) {
+	        	if (item != null) {
+					tv_title.setText(item.getOrderStateType().nameRes);
+					tv_detail.setText(item.getOrderContent());
+					tv_time.setText(item.getOrderStatusDateStr());
+				}
+			}
 	    }
 
 }

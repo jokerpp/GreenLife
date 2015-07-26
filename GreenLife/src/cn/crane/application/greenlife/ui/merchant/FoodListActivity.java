@@ -1,6 +1,7 @@
 package cn.crane.application.greenlife.ui.merchant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import cn.crane.application.greenlife.R;
 import cn.crane.framework.activity.BaseActivity;
@@ -11,8 +12,10 @@ import cn.crane.framework.activity.BaseActivity;
  * 
  */
 public class FoodListActivity extends BaseActivity {
-
+	public static final String MERCHANT_TOKEN = "merchantToken";
 	private FragmentManager fragmentManager;
+	
+	private String merchantToken = "";
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
@@ -33,12 +36,16 @@ public class FoodListActivity extends BaseActivity {
 
 	@Override
 	protected void init() {
+		
+		merchantToken = getIntent().getStringExtra(MERCHANT_TOKEN);
 		fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.rootView, new FragmentMeals()).commit();
+		fragmentManager.beginTransaction().replace(R.id.rootView, FragmentMeals.newInstance(merchantToken)).commit();
 	}
 	
-	public static void show(Context context) {
-		context.startActivity(createIntent(context, FoodListActivity.class));
+	public static void show(Context context,String merchantToken) {
+		Intent intent = createIntent(context, FoodListActivity.class);
+		intent.putExtra(MERCHANT_TOKEN, merchantToken);
+		context.startActivity(intent);
 	}
 
 }

@@ -41,6 +41,8 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 	private Task_Post task_Post_getMerchantsList;
 
 	private String type;
+	private String token;
+	
 
 
 	@Override
@@ -156,7 +158,11 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 
 		@Override
 		public void onItemClick(Object object) {
-			FoodListActivity.show(MerchantListAtivity.this);
+			if(object instanceof MerchantItem)
+			{
+				FoodListActivity.show(MerchantListAtivity.this,((MerchantItem)object).getMerchantToken());
+
+			}
 		}
 	};
 

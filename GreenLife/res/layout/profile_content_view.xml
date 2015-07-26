@@ -39,7 +39,8 @@
             android:src="@drawable/icon_forward" >
         </ImageView>
     </LinearLayout>
-  <include layout="@layout/common_divider"/>  
+  <include layout="@layout/common_divider"
+       android:visibility="gone"/>  
 <!-- 代金券 -->    
      <LinearLayout
         android:id="@+id/myaccount_voucher"
@@ -47,6 +48,7 @@
         android:layout_height="@dimen/myaccount_index_item_height"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
         android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
 
@@ -74,7 +76,8 @@
             android:src="@drawable/icon_forward" >
         </ImageView>
     </LinearLayout>
- <include   layout="@layout/common_divider"/>  
+ <include   layout="@layout/common_divider"
+      android:visibility="gone"/>  
 <!-- 我的退款 -->    
      <LinearLayout
         android:id="@+id/myaccount_drawback"
@@ -82,6 +85,7 @@
         android:layout_height="@dimen/myaccount_index_item_height"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+         android:visibility="gone"
         android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
         android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
 
@@ -223,6 +227,7 @@
         android:layout_height="@dimen/myaccount_index_item_height"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:paddingLeft="@dimen/myaccount_index_paddingLeftRight"
         android:paddingRight="@dimen/myaccount_index_paddingLeftRight" >
 

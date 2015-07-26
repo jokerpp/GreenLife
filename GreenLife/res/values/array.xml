@@ -14,6 +14,8 @@
         <!-- Arrow -->
         <attr name="arrow_visible" format="boolean" />
     </declare-styleable>
+    
+    
 
     <!-- Grid Index Category -->
     <string-array name="arr_grid_category">
@@ -37,5 +39,67 @@
         <item>@string/index_article_greenlife</item>
         <item>@string/index_article_minsu</item>
     </string-array>
+    
+    
+     <!-- Merchant Category -->
+    <string-array name="arr_merchant_category">
+        <item>Default</item>
+       <!--  <item>@string/merchant_category_xindiantuijian</item>
+        <item>@string/merchant_category_bianlidian</item>
+        <item>@string/merchant_category_pinpaikuaican</item>
+        <item>@string/merchant_category_zhangshizhengcan</item>
+        <item>@string/merchant_category_xiaochikuaican</item>
+        <item>@string/merchant_category_kafeitiandian</item> -->
+    </string-array>
+    <!-- Merchant Category Icon Default -->
+    <integer-array name="arr_merchant_category_icon_default">
+        <item>0</item>
+      <!--   <item>@drawable/merchant_category_xindian</item>
+        <item>@drawable/merchant_category_bianliche</item>
+        <item>@drawable/merchant_category_pinpaikuaican</item>
+        <item>@drawable/merchant_category_zhongshizhengcan</item>
+        <item>@drawable/merchant_category_xiaochikuaican</item>
+        <item>@drawable/merchant_category_kafeitiandian</item> -->
+    </integer-array>
+    <!-- Merchant Category Icon Select -->
+    <integer-array name="arr_merchant_category_icon_select">
+        <item>0</item>
+      <!--   <item>@drawable/merchant_category_xindian2</item>
+        <item>@drawable/merchant_category_bianliche2</item>
+        <item>@drawable/merchant_category_pinpaikuaican2</item>
+        <item>@drawable/merchant_category_zhongshizhengcan2</item>
+        <item>@drawable/merchant_category_xiaochikuaican2</item>
+        <item>@drawable/merchant_category_kafeitiandian2</item> -->
+    </integer-array>
+
+    <!-- Merchant Sort -->
+    <string-array name="arr_merchant_sort">
+        <item>Default</item>
+       <!--  <item>@string/merchant_sort_xiaoliang</item>
+        <item>@string/merchant_sort_distance</item>
+        <item>@string/merchant_sort_score</item>
+        <item>@string/merchant_sort_qisongjia</item>
+        <item>@string/merchant_sort_speed</item> -->
+    </string-array>
+    <!-- Merchant Welfare -->
+    <string-array name="arr_merchant_welfare">
+        <item>Default</item>
+       <!--  <item>@string/merchant_welfare_payonline</item>
+        <item>@string/merchant_welfare_xinyonghulijian</item>
+        <item>@string/merchant_welfare_lijianyouhui</item>
+        <item>@string/merchant_welfare_coupon</item>
+        <item>@string/merchant_welfare_fapiao</item>
+        <item>@string/merchant_welfare_kejiapeisong</item> -->
+    </string-array>
+    <!-- Merchant Welfare Icon Default -->
+    <integer-array name="arr_merchant_welfare_icon_default">
+        <item>0</item>
+       <!--  <item>@drawable/icon_fu</item>
+        <item>@drawable/icon_xin</item>
+        <item>@drawable/icon_jian</item>
+        <item>@drawable/icon_quan</item>
+        <item>@drawable/icon_piao</item>
+        <item>@drawable/icon_song</item> -->
+    </integer-array>
 
 </resources>

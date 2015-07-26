@@ -96,6 +96,7 @@
         android:layout_height="50dip"
         android:background="@color/main_color"
         android:gravity="center"
+        android:visibility="gone"
         android:text="@string/order_again"
         android:textColor="@color/white"
         android:textSize="17sp" />

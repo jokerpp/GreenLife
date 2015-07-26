@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
-import cn.crane.application.greenlife.bean.OrderItem;
 import cn.crane.application.greenlife.model.item.NewsItem;
 import cn.crane.framework.adapter.CommonAdapter;
 import cn.crane.framework.view.smartimage.SmartImageView;

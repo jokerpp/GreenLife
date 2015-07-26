@@ -46,6 +46,7 @@
             android:background="@color/transparent"
             android:button="@null"
             android:drawablePadding="5dip"
+            android:drawableRight="@drawable/check_btn_top_collect_selector"
             android:textColor="@color/white"
             android:visibility="gone" />
     </RelativeLayout>
@@ -89,7 +90,7 @@
                         android:id="@+id/tv_name_tel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="XX先生  18911111111"
+                        android:text="罗先生  18911111111"
                         android:textColor="@color/txt_black"
                         android:textSize="15sp" />
 
@@ -100,7 +101,7 @@
                         android:layout_marginTop="5dip"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="地址：天津市南开区花苑路"
+                        android:text="地址：北京是深刻的发牢骚大份"
                         android:textColor="@color/txt_gray"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -147,22 +148,6 @@
                     android:layout_marginTop="10dip" />
 
                 <RadioButton
-                    android:id="@+id/radio_pay_wechat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:checked="true"
-                    android:drawablePadding="10dip"
-                    android:drawableRight="@drawable/radio_selector"
-                    android:gravity="left|center_vertical"
-                    android:text="@string/order_pay_type_wechat"
-                    android:textColor="@color/txt_black" />
-                <View
-                    style="@style/line_gray"
-                    android:layout_marginBottom="10dip"
-                    android:layout_marginTop="10dip" />
-
-                <RadioButton
                     android:id="@+id/radio_pay_alipay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,6 +157,22 @@
                     android:drawableRight="@drawable/radio_selector"
                     android:gravity="left|center_vertical"
                     android:text="@string/order_pay_type_alipay"
+                    android:textColor="@color/txt_black" />
+                <View
+                    style="@style/line_gray"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="10dip" />
+
+                <RadioButton
+                    android:id="@+id/radio_pay_wechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawablePadding="10dip"
+                    android:drawableRight="@drawable/radio_selector"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/order_pay_type_wechat"
                     android:textColor="@color/txt_black" />
             </RadioGroup>
 
@@ -211,8 +212,6 @@
                         android:gravity="right|center_vertical"
                         android:singleLine="true"
                         android:text="@string/order_send_time_now"
-                        android:drawableRight="@drawable/icon_enter"
-                        android:drawablePadding="5dip"
                         android:textColor="@color/txt_gray"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -253,6 +252,55 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:padding="10dip" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="0dip" >
+
+                    <TextView
+                        android:id="@+id/tv_coupon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@string/txt_coupon"
+                        android:textColor="@color/txt_black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_coupon_tips"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dip"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@string/txt_coupon_tips"
+                        android:textColor="@color/main_color"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_enter" >
+                </ImageView>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

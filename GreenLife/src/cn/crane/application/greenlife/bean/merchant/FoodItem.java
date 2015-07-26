@@ -2,6 +2,9 @@ package cn.crane.application.greenlife.bean.merchant;
 
 import java.io.Serializable;
 
+import cn.crane.application.greenlife.api.API_Contant;
+
+
 /**
  * @author Ruifeng.yu E-mail:xyyh0116@aliyun.com
  * @version Create Time：May 29, 2015 10:45:10 PM
@@ -34,6 +37,20 @@ public class FoodItem implements FoodType,Serializable{
 //	菜品单位	unit		String
 //	是否有可选规格	isOption		String
 	
+//	"dishesGroupToken": "",
+//	"dishesName": "米饭测试3",
+//	"dishesPicture": "http://42.96.167.31:8080/zj/uploadfile/background/dishes/20150624223807109.jpg",
+//	"dishesToken": "13",
+//	"isMinAmount": 0,
+//	"isOption": 0,
+//	"minAmount": 0,
+//	"preferentialPrice": 3,
+//	"primePrice": 3,
+//	"recommendAmount": 0,
+//	"saleAmoun": 0,
+//	"stock": 0,
+//	"unit": ""
+	
 	private String dishesToken;
 	private String dishesPicture;
 	private String dishesName;
@@ -46,9 +63,15 @@ public class FoodItem implements FoodType,Serializable{
 	private String minAmount;
 	private String isOption;
 	private String dishesGroupName;
+	private String dishesGroupToken;
+	private String unit;
 	
-	private int iPrice = 0;
+	private float iprimePrice = 0;
+	private float iPrice = 0;
 	private int iCountChoose = 0;
+	
+	
+	private String amount;
 	
 	public FoodItem() {
 		// TODO Auto-generated constructor stub
@@ -101,7 +124,7 @@ public class FoodItem implements FoodType,Serializable{
 	public void setPrimePrice(String primePrice) {
 		this.primePrice = primePrice;
 		try {
-			iPrice = Integer.parseInt(primePrice.trim());
+			iprimePrice = Float.parseFloat(primePrice.trim());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -113,6 +136,11 @@ public class FoodItem implements FoodType,Serializable{
 
 	public void setPreferentialPrice(String preferentialPrice) {
 		this.preferentialPrice = preferentialPrice;
+		try {
+			iPrice = Float.parseFloat(preferentialPrice.trim());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	public String getStock() {
@@ -169,7 +197,7 @@ public class FoodItem implements FoodType,Serializable{
 	}
 
 
-	public int getiPrice() {
+	public float getiPrice() {
 		return iPrice;
 	}
 
@@ -177,17 +205,59 @@ public class FoodItem implements FoodType,Serializable{
 		this.iPrice = iPrice;
 	}
 	
-	
-	public int getTotalPrice() {
-		return iPrice * iCountChoose;
-	}
+
 
 	@Override
 	public String getId() {
 		return hashCode() + "";
 	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+	
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+		try {
+			iCountChoose = (int) Float.parseFloat(amount.trim());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public boolean isMinAmount() {
+		return API_Contant.TRUE.equalsIgnoreCase(isMinAmount);
+	}
+	
+	public boolean isOption() {
+		return API_Contant.TRUE.equalsIgnoreCase(isOption);
+	}
 	
 	
+	
+	public float getTotalPrice() {
+		return iPrice * iCountChoose;
+	}
+	public float getDiscountedPrice() {
+		return (iprimePrice - iPrice )* iCountChoose;
+	}
+
+	public String getDishesGroupToken() {
+		return dishesGroupToken;
+	}
+
+	public void setDishesGroupToken(String dishesGroupToken) {
+		this.dishesGroupToken = dishesGroupToken;
+	}
+
 	
 	
 }

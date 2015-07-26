@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import com.nineoldandroids.view.ViewHelper;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,9 +16,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.crane.application.greenlife.App;
 import cn.crane.application.greenlife.R;
+import cn.crane.application.greenlife.model.item.OrderItem;
+import cn.crane.application.greenlife.view.BottomBar;
+import cn.crane.application.greenlife.view.filter.ViewFilter.Type;
+import cn.crane.application.greenlife.view.popmenu.MenuItem;
+import cn.crane.application.greenlife.view.popmenu.OnMenuClickListener;
+import cn.crane.application.greenlife.view.popmenu.PopMenu;
 import cn.crane.framework.activity.BaseActivity;
 import cn.crane.framework.adapter.FragmentViewpaperAdapter;
 import cn.crane.framework.fragment.BaseFragment;
+import cn.crane.framework.utils.MakePhoneCall;
 
 /**
  * @author Ruifeng.yu E-mail:xyyh0116@aliyun.com
@@ -42,8 +52,12 @@ public class OrderDetailActivity extends BaseActivity {
 	
 	private int iCurrentPos = 0;
 	private TextView [] tvMenus;
-//	private ArrayList<MenuItem> arrMenuItems = new ArrayList<MenuItem>();
-//	private PopMenu popMenu;
+	private ArrayList<MenuItem> arrMenuItems = new ArrayList<MenuItem>();
+	private PopMenu popMenu;
+	
+	private OrderItem orderItem = new OrderItem();
+	
+	private String tel;
 
 	@Override
 	protected int getLayoutId() {
@@ -77,6 +91,14 @@ public class OrderDetailActivity extends BaseActivity {
 
 	@Override
 	protected void init() {
+		
+		try {
+			orderItem = (OrderItem) getIntent().getExtras().getSerializable(OrderItem.TAG);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		pagerItemList.clear();
 		pagerItemList.add(index);
 		pagerItemList.add(index2);
@@ -87,6 +109,13 @@ public class OrderDetailActivity extends BaseActivity {
 
 			@Override
 			public void onPageSelected(int position) {
+				switch (position) {
+				case BottomBar.TAG_1:
+					break;
+
+				default:
+					break;
+				}
 				setiCurrentPos(position);
 			}
 
@@ -104,51 +133,57 @@ public class OrderDetailActivity extends BaseActivity {
 		});
 		
 		setiCurrentPos(0);
-//		initMenu();
+		initMenu();
 	}
 	
-//	private void initMenu() {
-//		arrMenuItems.clear();
-//		MenuItem item = null;
-//		item = new MenuItem();
-//		item.setTag(MenuItem.TAG_MENU_MERCHANT_LIANXI);
-//		item.setTitle(getString(R.string.order_contact_merchant));
-//		item.setIconRes(R.drawable.icon_order_detail_tel);
-//		arrMenuItems .add(item);
-//		item = new MenuItem();
-//		item.setTag(MenuItem.TAG_MENU_MERCHANT_TOUSU);
-//		item.setTitle(getString(R.string.order_tousu_merchant));
-//		item.setIconRes(R.drawable.icon_order_detail_msg);
-//		item.setBnew(false);
-//		arrMenuItems.add(item);
-//		popMenu = new PopMenu(this, arrMenuItems, onMenuClickListener,
-//				PopMenu.width1);
-//	}
-//	
-//	/**
-//	 * 菜单点击回调
-//	 */
-//	private OnMenuClickListener onMenuClickListener = new OnMenuClickListener() {
-//
-//		@Override
-//		public void onMenuClick(MenuItem item) {
-//			if (item != null) {
-//				switch (item.getTag()) {
-//				case MenuItem.TAG_MENU_MERCHANT_LIANXI:
+	private void initMenu() {
+		arrMenuItems.clear();
+		MenuItem item = null;
+		item = new MenuItem();
+		item.setTag(MenuItem.TAG_MENU_MERCHANT_LIANXI);
+		item.setTitle(getString(R.string.order_contact_merchant));
+		item.setIconRes(R.drawable.icon_order_detail_tel);
+		arrMenuItems .add(item);
+		item = new MenuItem();
+		item.setTag(MenuItem.TAG_MENU_MERCHANT_TOUSU);
+		item.setTitle(getString(R.string.order_tousu_merchant));
+		item.setIconRes(R.drawable.icon_order_detail_msg);
+		item.setBnew(false);
+		arrMenuItems.add(item);
+		popMenu = new PopMenu(this, arrMenuItems, onMenuClickListener,
+				PopMenu.width1);
+	}
+	
+	/**
+	 * 菜单点击回调
+	 */
+	private OnMenuClickListener onMenuClickListener = new OnMenuClickListener() {
+
+
+		@Override
+		public void onMenuClick(Type type, int position, MenuItem item) {
+			if (item != null) {
+				switch (item.getTag()) {
+				case MenuItem.TAG_MENU_MERCHANT_LIANXI:
 //					MerchantFeedbackActivity.show(OrderDetailActivity.this);
-//					break;
-//				case MenuItem.TAG_MENU_MERCHANT_TOUSU:
-//					MerchantFeedbackActivity.show(OrderDetailActivity.this);
-//					break;
-//
-//				default:
-//					break;
-//				}
-//				if (popMenu != null && popMenu.isShowing())
-//					popMenu.dismiss();
-//			}
-//		}
-//	};
+					if(TextUtils.isEmpty(tel))
+					{
+						MakePhoneCall.call(OrderDetailActivity.this, tel);
+					}
+					break;
+				case MenuItem.TAG_MENU_MERCHANT_TOUSU:
+					String orderToken = orderItem != null ? orderItem.getOrderToken() : "";
+//					MerchantFeedbackActivity.show(OrderDetailActivity.this,MerchantFeedbackActivity.TYPE_COMPLAIN,orderToken);
+					break;
+
+				default:
+					break;
+				}
+				if (popMenu != null && popMenu.isShowing())
+					popMenu.dismiss();
+			}			
+		}
+	};
 
 	
 	@Override
@@ -195,13 +230,24 @@ public class OrderDetailActivity extends BaseActivity {
 			mPager.setCurrentItem(1);
 			break;
 		case R.id.btn_right:
-//			popMenu.showAsDropDown(btnRight);
+			popMenu.showAsDropDown(btnRight);
 			break;
 		default:
 			break;
 		}
 	}
 	
+	public String getOrderToken() {
+		if(orderItem != null && !TextUtils.isEmpty(orderItem.getOrderToken()))
+		{
+			return orderItem.getOrderToken();
+		}
+		return "";
+	}
+	
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 	
 	
 	@Override
@@ -209,7 +255,11 @@ public class OrderDetailActivity extends BaseActivity {
 		return false;
 	}
 	
-	public static void show(Context context) {
-		context.startActivity(createIntent(context, OrderDetailActivity.class));
+	public static void show(Context context,OrderItem orderItem) {
+		Intent intent = createIntent(context, OrderDetailActivity.class);
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(OrderItem.TAG, orderItem);
+		intent.putExtras(bundle);
+		context.startActivity(intent);
 	}
 }

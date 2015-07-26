@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/item_height"
+        android:gravity="center_vertical" >
+
+        <cn.crane.framework.view.smartimage.SmartImageView
+            android:id="@+id/tv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxHeight="37dip"
+            android:maxWidth="37dip"
+            android:scaleType="centerInside"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dip"
+            android:ellipsize="end"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/tv_setting_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_icon"
+            android:layout_marginLeft="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="我的返利" />
+
+        <TextView
+            android:id="@+id/tv_icon_enter"
+            style="@style/tv_setting_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="0sp"
+            android:background="@drawable/btn_list_item_enter_selector" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            style="@style/tv_setting_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dip"
+            android:layout_toLeftOf="@id/tv_icon_enter"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_toRightOf="@id/tv_title"
+            android:gravity="right"
+            android:singleLine="true"
+            android:text="" />
+
+        <View
+            android:id="@+id/line"
+            style="@style/line_gray"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+</LinearLayout>

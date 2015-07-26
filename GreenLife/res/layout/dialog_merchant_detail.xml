@@ -13,7 +13,7 @@
     <cn.crane.framework.view.smartimage.SmartImageView
         android:id="@+id/iv_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dip"
         android:scaleType="centerCrop"
         android:src="@drawable/test_index_image" />
 

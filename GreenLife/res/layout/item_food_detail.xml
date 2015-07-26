@@ -20,7 +20,7 @@
             android:layout_width="60dip"
             android:layout_height="60dip"
             android:scaleType="centerCrop"
-            android:src="@drawable/test_index_image" />
+            />
 
         <LinearLayout
             android:layout_width="0dip"
@@ -38,7 +38,6 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="南美小香蕉"
                 android:textColor="@color/txt_black"
                 android:textSize="16sp" />
 
@@ -70,6 +69,22 @@
         </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_kexuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="5dip"
+        android:drawablePadding="5dip"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:padding="3dip"
+        android:singleLine="true"
+        android:text="@string/txt_food_kexuan"
+        android:textColor="@color/main_color"
+        android:textSize="10sp" />
 
     <cn.crane.application.greenlife.view.ViewAddMinus
         android:id="@+id/view_add_minus"

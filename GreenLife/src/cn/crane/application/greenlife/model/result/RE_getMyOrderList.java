@@ -2,8 +2,8 @@ package cn.crane.application.greenlife.model.result;
 
 import java.util.List;
 
-import cn.crane.application.greenlife.bean.OrderItem;
 import cn.crane.application.greenlife.model.Result;
+import cn.crane.application.greenlife.model.item.OrderItem;
 
 
 /**

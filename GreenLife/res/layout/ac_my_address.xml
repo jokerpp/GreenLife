@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_index"
+    android:orientation="vertical" >
+
+    <!--
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="vertical"
+        android:layout_weight="1" >
+    </LinearLayout>
+    -->
+
+    <RelativeLayout
+        android:id="@+id/ll_titleBar"
+        style="@style/title_bar"
+        android:background="@color/white" >
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/title_bar_btn"
+            android:layout_alignParentLeft="true"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/btn_back_gray"
+            android:drawablePadding="-15dip"
+            android:text="@string/txt_back"
+            android:textColor="@color/txt_gray"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/title_bar_text"
+            android:gravity="center"
+            android:text="@string/txt_my_address"
+            android:textColor="@color/txt_gray"
+            android:textSize="17sp" />
+
+        <CheckBox
+            android:id="@+id/btn_right"
+            style="@style/title_bar_btn"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:button="@null"
+            android:drawablePadding="5dip"
+            android:drawableRight="@drawable/check_btn_top_collect_selector"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View style="@style/line_gray" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@color/transparent"
+        android:childDivider="@color/divider_line"
+        android:divider="@color/divider_line"
+        android:dividerHeight="1dip"
+        android:listSelector="@color/transparent" />
+
+</LinearLayout>

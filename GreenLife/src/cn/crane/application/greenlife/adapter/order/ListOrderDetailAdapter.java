@@ -22,11 +22,11 @@ public class ListOrderDetailAdapter extends CommonAdapter<String> {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return 10;
-	}
+//	@Override
+//	public int getCount() {
+//		// TODO Auto-generated method stub
+//		return 10;
+//	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {

@@ -225,7 +225,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		
 		@Override
 		public void onItemClick(CarouselItemInfo pictureInfo) {
-			FoodListActivity.show(getActivity());
+			FoodListActivity.show(getActivity(),"");
 		}
 		
 		@Override

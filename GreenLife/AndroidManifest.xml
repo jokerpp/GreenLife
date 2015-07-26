@@ -173,12 +173,14 @@
         <activity
             android:name="cn.crane.application.greenlife.ui.order.OrderConfirmActivity"
             android:label="@string/app_name" 
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
         </activity>
         <!-- 支付 -->
         <activity
             android:name="cn.crane.application.greenlife.ui.order.PayActivity"
             android:label="@string/app_name" 
+               android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
         </activity>
         
@@ -213,6 +215,71 @@
             android:label="@string/app_name" 
             android:screenOrientation="portrait">
         </activity>
+        <!-- 添加地址 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.address.AddAddressActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- 地址 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.address.MyAddressActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <!-- 我的收藏 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.collect.MyCollectAtivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- 我的评论 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.comment.MyCommentsAtivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- 修改密码 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.ResetPasswordActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        
+        
+        <!--   Wechat   -->
+         <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1103300332" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

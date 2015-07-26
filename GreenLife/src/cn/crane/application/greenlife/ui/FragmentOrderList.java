@@ -13,12 +13,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import cn.crane.application.greenlife.R;
-import cn.crane.application.greenlife.adapter.ListOrderAdapter;
+import cn.crane.application.greenlife.adapter.order.ListOrderAdapter;
 import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.api.Task_Post;
-import cn.crane.application.greenlife.bean.OrderItem;
 import cn.crane.application.greenlife.data.DataManager;
+import cn.crane.application.greenlife.model.item.OrderItem;
 import cn.crane.application.greenlife.model.result.RE_getMyOrderList;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
 import cn.crane.application.greenlife.ui.order.OrderDetailActivity;
@@ -148,7 +148,7 @@ public class FragmentOrderList extends BaseFragment implements OnClickListener, 
 		Object object = parent.getItemAtPosition(position);
 		if(object != null && object instanceof OrderItem)
 		{
-//			OrderDetailActivity.show(getActivity(),(OrderItem) object);
+			OrderDetailActivity.show(getActivity(),(OrderItem) object);
 		}
 		
 	}

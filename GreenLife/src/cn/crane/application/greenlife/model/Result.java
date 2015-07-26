@@ -2,6 +2,8 @@ package cn.crane.application.greenlife.model;
 
 import java.io.Serializable;
 
+import cn.crane.application.greenlife.Constant;
+
 
 /**
  * 接口返回数据基类
@@ -15,7 +17,6 @@ public class Result implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	public String TAG = "";
-	public static final String STATE_SUCCESS = "0";
 	private String resultNumber;
 	private String resultMessage = "";
 //	请求页码	pageIndex		Int
@@ -26,6 +27,8 @@ public class Result implements Serializable{
 	private Integer pageSize;
 	private Integer total;
 	private Integer size;
+	
+	private String data;
 
 	public Result() {
 		TAG = getClass().getSimpleName();
@@ -47,7 +50,7 @@ public class Result implements Serializable{
 	}
 
 	public boolean isSuccess() {
-		return STATE_SUCCESS.equalsIgnoreCase(resultNumber);
+		return Constant.RETURN_CODE_SUCCESS.equalsIgnoreCase(resultNumber);
 	}
 	public Integer getPageIndex() {
 		return pageIndex;
@@ -72,6 +75,12 @@ public class Result implements Serializable{
 	}
 	public void setSize(Integer size) {
 		this.size = size;
+	}
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
 	}
 	
 	

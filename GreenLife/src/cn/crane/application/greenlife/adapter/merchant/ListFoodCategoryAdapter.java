@@ -40,7 +40,7 @@ public class ListFoodCategoryAdapter extends CommonAdapter<FoodGroup>
         View viewLeft =  view.findViewById(R.id.view_left_red);
         View bg =  view.findViewById(R.id.ll_bg);
         FoodGroup group = (FoodGroup) getItem(position);
-        tv.setText(group.getFoodType());
+        tv.setText(group.getDishesGroupName());
         view.setTag(R.id.tag_data, group);
         if(iSelect == position)
         {

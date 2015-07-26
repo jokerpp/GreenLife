@@ -30,6 +30,12 @@ public class ListFoodAdapter extends BaseExpandableListAdapter implements OnClic
 	private int totalPrice;
 	private List<FoodItem> arrFoodItems = new ArrayList<FoodItem>();;
 
+	private boolean isOpenTime = true;
+	
+	public void setOpenTime(boolean isOpenTime) {
+		this.isOpenTime = isOpenTime;
+		notifyDataSetChanged();
+	}
 
     public ListFoodAdapter(Context context, List<FoodGroup> arrTeamGroups)
     {
@@ -180,6 +186,7 @@ public class ListFoodAdapter extends BaseExpandableListAdapter implements OnClic
         TextView tvDetail = (TextView) view.findViewById(R.id.tv_detail);
         TextView tvPrice = (TextView) view.findViewById(R.id.tv_price);
         SmartImageView iv = (SmartImageView) view.findViewById(R.id.iv_image);
+        TextView tvKexuan = (TextView) view.findViewById(R.id.tv_kexuan);
         
         ViewAddMinus addMinus = (ViewAddMinus) view.findViewById(R.id.view_add_minus);
         TextView tvSleep = (TextView) view.findViewById(R.id.tv_merchant_sleep);
@@ -187,12 +194,29 @@ public class ListFoodAdapter extends BaseExpandableListAdapter implements OnClic
         
         addMinus.setOnNumberChangedListener(onNumberChangedListener);
         if (item != null) {
-			tvTitle.setText(item.getDishesGroupName());
-			tvDetail.setText(item.getDishesName());
+			tvTitle.setText(item.getDishesName());
+			tvDetail.setText(context.getString(R.string.format_food_detail,item.getSaleAmoun(),item.getRecommendAmount()));
+			tvPrice.setText(context.getString(R.string.txt_format_price, item.getPreferentialPrice()));
+			tvKexuan.setVisibility(View.GONE);
 			tvSleep.setVisibility(View.GONE);
 			addMinus.setVisibility(View.VISIBLE);
 			
 			
+			iv.setImageUrl(item.getDishesPicture());
+			
+			if(item.isOption())
+			{
+				tvKexuan.setVisibility(View.VISIBLE);
+				tvSleep.setVisibility(View.GONE);
+				addMinus.setVisibility(View.GONE);
+			}
+			
+			if(!isOpenTime)
+			{
+				tvKexuan.setVisibility(View.GONE);
+				tvSleep.setVisibility(View.VISIBLE);
+				addMinus.setVisibility(View.GONE);
+			}
 			addMinus.setItem(item);
 			addMinus.setiNumber(item.getiCountChoose());
 			view.setTag(R.id.tag_data, item);

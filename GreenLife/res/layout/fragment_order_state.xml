@@ -14,10 +14,55 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:paddingTop="20dip"
+        android:layout_weight="1"
         android:cacheColorHint="@color/transparent"
         android:childDivider="@color/divider_line"
         android:divider="@color/divider_line"
         android:dividerHeight="0dip"
         android:listSelector="@color/transparent" />
 
+    <TextView
+            android:id="@+id/tv_option_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_margin="10dip"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:minWidth="120dip"
+            android:text="@string/order_option_cancel"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    <TextView
+            android:id="@+id/tv_option_pay"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_margin="10dip"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:minWidth="120dip"
+            android:text="@string/order_option_pay"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    <TextView
+            android:id="@+id/tv_option_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_margin="10dip"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:minWidth="120dip"
+            android:text="@string/order_option_reminder"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    <TextView
+            android:id="@+id/tv_option_comment"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_margin="10dip"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:minWidth="120dip"
+            android:text="@string/order_option_comment"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
 </LinearLayout>
