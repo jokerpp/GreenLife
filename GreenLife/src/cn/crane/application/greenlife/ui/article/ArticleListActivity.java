@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSONArray;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -20,6 +21,7 @@ import cn.crane.application.greenlife.adapter.merchant.ListMerchantAdapter;
 import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.api.Task_Post;
+import cn.crane.application.greenlife.model.item.NewsGroupItem;
 import cn.crane.application.greenlife.model.item.NewsItem;
 import cn.crane.application.greenlife.model.result.RE_getNewsList;
 import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
@@ -154,6 +156,13 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 	public static void show(Context context ,String type) {
 		Intent intent = createIntent(context, ArticleListActivity.class);
 		intent.putExtra(API_Contant.TYPE, type);
+		context.startActivity(intent);
+	}
+	public static void show(Context context ,NewsGroupItem groupItem) {
+		Intent intent = createIntent(context, ArticleListActivity.class);
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(NewsGroupItem.TAG, groupItem);
+		intent.putExtras(bundle);
 		context.startActivity(intent);
 	}
 

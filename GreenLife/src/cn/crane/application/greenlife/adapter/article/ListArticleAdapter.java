@@ -1,8 +1,10 @@
 package cn.crane.application.greenlife.adapter.article;
 
+import java.net.URLEncoder;
 import java.util.List;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +50,7 @@ public class ListArticleAdapter extends CommonAdapter<NewsItem> {
 		{
 			iv_image.setImageUrl(item.getImageUrl());
 			tv_title.setText(item.getNewsTitle());
-			tv_detail.setText(item.getNewsContent());
+			tv_detail.setText(Html.fromHtml(item.getNewsContent()));
 		}
 		return view;
 	}

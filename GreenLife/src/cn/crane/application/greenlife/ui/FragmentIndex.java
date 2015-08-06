@@ -1,7 +1,10 @@
 package cn.crane.application.greenlife.ui;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import com.alibaba.fastjson.JSONArray;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,11 +20,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.adapter.index.GridCatedoryAdapter;
+import cn.crane.application.greenlife.adapter.index.GridCatedoryServerAdapter;
 import cn.crane.application.greenlife.adapter.index.ListArticleCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.PictureInfo;
+import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
+import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.bean.index.ArticleCategoryItem;
 import cn.crane.application.greenlife.bean.index.GridCategoryItem;
+import cn.crane.application.greenlife.data.DataManager;
+import cn.crane.application.greenlife.model.item.MerchantGroupItem;
+import cn.crane.application.greenlife.model.item.NewsGroupItem;
+import cn.crane.application.greenlife.model.result.RE_getMerchantGroupList;
+import cn.crane.application.greenlife.model.result.RE_getMyOrderList;
+import cn.crane.application.greenlife.model.result.RE_getNewsGroupList;
 import cn.crane.application.greenlife.ui.article.ArticleListActivity;
 import cn.crane.application.greenlife.ui.merchant.FoodListActivity;
 import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
@@ -38,6 +50,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 
 	private CarouselView carouselView;
 	private GridView gvCategory;
+	private GridView grid_category_auto;
 	private ListView lvArticle;
 	
 	private TextView tvShilingzhong;
@@ -48,12 +61,16 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	private EditText et_search;
 	
 	private GridCatedoryAdapter gridCatedoryAdapter;
+	private GridCatedoryServerAdapter gridCatedoryAdapterServer;
 	private ListArticleCatedoryAdapter articleCatedoryAdapter;
 	
 	private List<GridCategoryItem> arrGridCategoryItems = new ArrayList<GridCategoryItem>();
-	private List<ArticleCategoryItem> arrArticleCategoryItems = new ArrayList<ArticleCategoryItem>();
+//	private List<ArticleCategoryItem> arrArticleCategoryItems = new ArrayList<ArticleCategoryItem>();
+	private List<NewsGroupItem> arrNewsGroupItems = new ArrayList<NewsGroupItem>();
 	
 	private List<CarouselItemInfo> arrPictureInfos = new ArrayList<CarouselItemInfo>();
+	
+	private List<MerchantGroupItem> arrGroupItems = new ArrayList<MerchantGroupItem>();
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
@@ -64,6 +81,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	protected void findViews() {
 		carouselView = (CarouselView) findViewById(R.id.carouseView);
 		gvCategory = (GridView) findViewById(R.id.grid_category);
+		grid_category_auto = (GridView) findViewById(R.id.grid_category_auto);
 		lvArticle = (ListView) findViewById(R.id.lv);
 		tvShilingzhong = (TextView) findViewById(R.id.tv_shilingzhong);
 		tvYouhui= (TextView) findViewById(R.id.tv_youhui);
@@ -76,6 +94,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	protected void bindViews() {
 		gvCategory.setOnItemClickListener(this);
 		lvArticle.setOnItemClickListener(this);
+		grid_category_auto.setOnItemClickListener(this);
 		
 		tvShilingzhong.setOnClickListener(this);
 		tvYouhui.setOnClickListener(this);
@@ -122,16 +141,23 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 			return false;
 		}
 	};
+	private Task_Post task_Post_getNewsGroupList;
+	private Task_Post task_Post_getMerchantGroupList;
 	
 	@Override
 	protected void init() {
 		gridCatedoryAdapter = new GridCatedoryAdapter(getActivity(), arrGridCategoryItems);
 		gvCategory.setAdapter(gridCatedoryAdapter);
 		
-		articleCatedoryAdapter = new ListArticleCatedoryAdapter(getActivity(), arrArticleCategoryItems);
+		articleCatedoryAdapter = new ListArticleCatedoryAdapter(getActivity(), arrNewsGroupItems);
 		lvArticle.setAdapter(articleCatedoryAdapter);
 		
+		gridCatedoryAdapterServer = new GridCatedoryServerAdapter(getActivity(), arrGroupItems);
+		grid_category_auto.setAdapter(gridCatedoryAdapterServer);
 		loadData();
+		getNewsGroupList();
+		
+		getMerchantGroupList();
 	}
 	
 	private void loadData() {
@@ -139,7 +165,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		int [] arrIcons = new int[arrGrids.length];
 		arrIcons = new int []{R.drawable.icon_shucai,R.drawable.icon_shuiguo,R.drawable.icon_liangyou
 				,R.drawable.icon_seafood,R.drawable.icon_shushi,R.drawable.icon_drink
-				,R.drawable.icon_eggs,R.drawable.icon_yewei};
+				,R.drawable.icon_eggs,R.drawable.icon_tea};
 		
 		
 		arrGridCategoryItems.clear();
@@ -153,18 +179,18 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		}
 		gridCatedoryAdapter.notifyDataSetChanged();
 		
-		String [] arrArticles = getResources().getStringArray(R.array.arr_article_category);
-		int [] colors = new int []{R.color.main_color,R.color.txt_purple,R.color.txt_orange,R.color.txt_blue};
-		arrArticleCategoryItems.clear();
-		for(int i = 0;i< arrArticles.length;i++)
-		{
-			ArticleCategoryItem item = new ArticleCategoryItem();
-			item.setTxt(arrArticles[i]);
-			item.setBgColor(colors[i]);
-			item.setType(API_Contant.arrArticleTypes[i]);
-			arrArticleCategoryItems.add(item);
-		}
-		articleCatedoryAdapter.notifyDataSetChanged();
+//		String [] arrArticles = getResources().getStringArray(R.array.arr_article_category);
+//		int [] colors = new int []{R.color.main_color,R.color.txt_purple,R.color.txt_orange,R.color.txt_blue};
+//		arrArticleCategoryItems.clear();
+//		for(int i = 0;i< arrArticles.length;i++)
+//		{
+//			ArticleCategoryItem item = new ArticleCategoryItem();
+//			item.setTxt(arrArticles[i]);
+//			item.setBgColor(colors[i]);
+//			item.setType(API_Contant.arrArticleTypes[i]);
+//			arrArticleCategoryItems.add(item);
+//		}
+//		articleCatedoryAdapter.notifyDataSetChanged();
 		
 		arrPictureInfos.clear();
 		for(int i = 0;i<3;i++)
@@ -176,6 +202,95 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		}
 		carouselView.setArrPictureInfos(arrPictureInfos);
 	}
+	
+	private void getNewsGroupList() {
+//		用户加密ID	userToken	必填	String	
+//		时间戳	timeStamp		Long	
+//		请求页码	pageIndex		Int	
+//		每页记录	pageSize		Int	
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("timeStamp", API_Contant.getTimeStamp());
+		
+		Task_Post.clearTask(task_Post_getNewsGroupList);
+		task_Post_getNewsGroupList = new Task_Post(map, API.API_getNewsGroupList,
+				new Task_Post.OnPostEndListener() {
+			
+			@Override
+			public void onPostEnd(String sResult) {
+				dismissLoadingDlg();
+				RE_getNewsGroupList result = new RE_getNewsGroupList();
+				try {
+					result = JSONArray.parseObject(sResult,
+							RE_getNewsGroupList.class);
+					if (result.isSuccess()) {
+						refreshUI(result);
+					} else {
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+//							App.showToast(R.string.api_error_code_6);
+				}
+			}
+		});
+		task_Post_getNewsGroupList.execute();
+		displayLoadingDlg(R.string.loading);
+		
+	}
+	private void getMerchantGroupList() {
+//		用户加密ID	userToken	必填	String	
+//		时间戳	timeStamp		Long	
+//		请求页码	pageIndex		Int	
+//		每页记录	pageSize		Int	
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("timeStamp", API_Contant.getTimeStamp());
+		
+		Task_Post.clearTask(task_Post_getMerchantGroupList);
+		task_Post_getMerchantGroupList = new Task_Post(map, API.API_getMerchantGroupList,
+				new Task_Post.OnPostEndListener() {
+			
+			@Override
+			public void onPostEnd(String sResult) {
+				dismissLoadingDlg();
+				RE_getMerchantGroupList result = new RE_getMerchantGroupList();
+				try {
+					result = JSONArray.parseObject(sResult,
+							RE_getMerchantGroupList.class);
+					if (result.isSuccess()) {
+						refreshUI(result);
+					} else {
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+//							App.showToast(R.string.api_error_code_6);
+				}
+			}
+		});
+		task_Post_getMerchantGroupList.execute();
+		displayLoadingDlg(R.string.loading);
+		
+	}
+
+	protected void refreshUI(RE_getMerchantGroupList result) {
+		if(result != null)
+		{
+			arrGroupItems.clear();
+			arrGroupItems.addAll(result.getResultList());
+			gridCatedoryAdapterServer.notifyDataSetChanged();
+		}
+	}
+
+	protected void refreshUI(RE_getNewsGroupList result) {
+		if(result != null)
+		{
+			arrNewsGroupItems.clear();
+			if(result.getResultList() != null)
+			{
+				arrNewsGroupItems.addAll(result.getResultList());
+			}
+			articleCatedoryAdapter.notifyDataSetChanged();
+		}
+	}
+	
 
 	@Override
 	public void onClick(View v) {
@@ -209,10 +324,16 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 				MerchantListAtivity.show(getActivity(),((GridCategoryItem)object).getType());
 			}
 			break;
-		case R.id.lv:
-			if(object instanceof ArticleCategoryItem)
+		case R.id.grid_category_auto:
+			if(object instanceof MerchantGroupItem)
 			{
-				ArticleListActivity.show(getActivity(),((ArticleCategoryItem)object).getType());
+				MerchantListAtivity.show(getActivity(),((MerchantGroupItem)object).getMerchantGroupToken());
+			}
+			break;
+		case R.id.lv:
+			if(object instanceof NewsGroupItem)
+			{
+				ArticleListActivity.show(getActivity(),((NewsGroupItem)object).getNewsGroupToken());
 			}
 			break;
 
@@ -233,5 +354,11 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 			// TODO Auto-generated method stub
 			
 		}
+	};
+	
+	public void onDestroy() {
+		super.onDestroy();
+		Task_Post.clearTask(task_Post_getNewsGroupList);
+		Task_Post.clearTask(task_Post_getMerchantGroupList);
 	};
 }

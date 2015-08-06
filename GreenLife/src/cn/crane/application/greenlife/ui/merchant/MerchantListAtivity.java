@@ -102,11 +102,11 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 //		请求页码	pageIndex		Int	
 //		每页记录	pageSize		Int	
 		HashMap<String, String> map = new HashMap<String, String>();
-//		map.put("merchantType", getMerchantType());
+		map.put("merchantType", getMerchantType());
 		
-//		map.put("orderType", orderType);
-//		map.put("merchantGroupToken", merchantGroupToken);
-//		map.put("conditionType", conditionType);
+		map.put("orderType", "0");
+		map.put("merchantGroupToken", getMerchantType());
+		map.put("conditionType", "0");
 		
 		map.put("longitude", DataManager.longitude);
 		map.put("latitude", DataManager.latitude);

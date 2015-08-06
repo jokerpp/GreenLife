@@ -1,11 +1,13 @@
 package cn.crane.application.greenlife.ui.article;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import com.alibaba.fastjson.JSONArray;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -110,7 +112,7 @@ public class ArticleDetailActivity extends BaseActivity {
 				tvTitle.setText(result.getNewsTitle());
 				tvArticleTitle.setText(result.getNewsTitle());
 			}
-			tvArticleDetail.setText(result.getNewsContent());
+			tvArticleDetail.setText(Html.fromHtml(result.getNewsContent()));
 		}
 	}
 

@@ -17,15 +17,17 @@ public class API_Contant {
 	public static final String MERCHANT_TYPE_YUDING = "3";
 	public static final String MERCHANT_TYPE_MEISHI = "3";
 	
-	public static final String MERCHANT_TYPE_SHUCAI = "4";
-	public static final String MERCHANT_TYPE_SHUIGUO = "5";
-	public static final String MERCHANT_TYPE_LIANGYOU = "6";
-	public static final String MERCHANT_TYPE_SHUICHAN = "7";
+//	健康蔬菜1、精品水果2、五味粮油3、海鲜水产4
+//	酱货熟食5、饮品酒水6、禽蛋鲜肉7、爱尚野味8
+	public static final String MERCHANT_TYPE_SHUCAI = "1";
+	public static final String MERCHANT_TYPE_SHUIGUO = "2";
+	public static final String MERCHANT_TYPE_LIANGYOU = "3";
+	public static final String MERCHANT_TYPE_SHUICHAN = "4";
 	
-	public static final String MERCHANT_TYPE_JIANGHUO = "8";
-	public static final String MERCHANT_TYPE_JIUSHUI = "9";
-	public static final String MERCHANT_TYPE_XIANROU = "10";
-	public static final String MERCHANT_TYPE_YEWEI = "11";
+	public static final String MERCHANT_TYPE_JIANGHUO = "5";
+	public static final String MERCHANT_TYPE_JIUSHUI = "6";
+	public static final String MERCHANT_TYPE_XIANROU = "7";
+	public static final String MERCHANT_TYPE_YEWEI = "8";
 	
 	
 	public static String[] arrMerchantTYpes = new String[] {

@@ -11,7 +11,8 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 public class API {
-	public static final String IP = "http://42.96.167.31:8080";
+//	public static final String IP = "http://42.96.167.31:8080";
+	public static final String IP = "http://123.57.80.185";
 	public static final String PORT = "";
 	
 //	public static final String HOST_DEFAULT = "http://www.cheweilaile.com";
@@ -22,6 +23,11 @@ public class API {
 //	public static final String API_ADDRESS = IP + PROJECT_NAME + NAMESPACE;
 	public static final String API_ADDRESS = HOST + "/";
 	
+	
+	public static final String API_getNewsGroupList = "zj/json/getNewsGroupList.action";
+	public static final String API_getNewsList = "zj/json/getNewsList.action";
+	public static final String API_getNewsDetails = "zj/json/getNewsDetails.action";
+	public static final String API_getMerchantGroupList = "zj/json/getMerchantGroupList.action";
 	
 	public static final String API_startPicture = "zj/json/startPicture.action";
 	public static final String API_guidePicturesList = "zj/json/guidePicturesList.action";
@@ -77,9 +83,7 @@ public class API {
 	public static final String API_advertisedMerchantList = "zj/json/advertisedMerchantList.action";
 	
 	public static final String API_getTopNews = "zj/json/getTopNews.action";
-	public static final String API_getNewsDetails = "zj/json/getNewsDetails.action";
 	
-	public static final String API_getNewsList = "zj/json/getNewsList.action";
 	
 	//配送员
 	public static final String API_getNearbyOrdersList = "zj/json/getNearbyOrdersList.action";

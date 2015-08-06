@@ -30,7 +30,7 @@
         <item>@string/index_category_cookedfood</item>
         <item>@string/index_category_drinks</item>
         <item>@string/index_category_meat</item>
-        <item>@string/index_category_outdoor</item>
+        <item>@string/index_category_tea</item>
     </string-array>
     <!-- Index Article Category -->
     <string-array name="arr_article_category">

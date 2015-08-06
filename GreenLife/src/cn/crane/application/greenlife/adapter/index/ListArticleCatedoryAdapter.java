@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.bean.index.ArticleCategoryItem;
+import cn.crane.application.greenlife.model.item.NewsGroupItem;
 import cn.crane.framework.adapter.CommonAdapter;
 
 /**
@@ -16,9 +17,10 @@ import cn.crane.framework.adapter.CommonAdapter;
  * @version Create Time：Jun 8, 2015 10:57:28 PM
  * 
  */
-public class ListArticleCatedoryAdapter extends CommonAdapter<ArticleCategoryItem> {
+public class ListArticleCatedoryAdapter extends CommonAdapter<NewsGroupItem> {
 
-	public ListArticleCatedoryAdapter(Context context, List<ArticleCategoryItem> list) {
+	private int [] colors = new int []{R.color.main_color,R.color.txt_purple,R.color.txt_orange,R.color.txt_blue};
+	public ListArticleCatedoryAdapter(Context context, List<NewsGroupItem> list) {
 		super(context, list);
 	}
 
@@ -33,11 +35,11 @@ public class ListArticleCatedoryAdapter extends CommonAdapter<ArticleCategoryIte
 			view = convertView;
 		}
 		TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
-		ArticleCategoryItem articleCategoryItem = (ArticleCategoryItem) getItem(position);
-		if(articleCategoryItem != null)
+		NewsGroupItem item = (NewsGroupItem) getItem(position);
+		if(item != null)
 		{
-			tvTitle.setText(articleCategoryItem.getTxt());
-			view.setBackgroundColor(context.getResources().getColor(articleCategoryItem.getBgColor()));
+			tvTitle.setText(item.getNewsGroupName());
+			view.setBackgroundColor(context.getResources().getColor(colors[position % colors.length]));
 		}
 		return view;
 	}

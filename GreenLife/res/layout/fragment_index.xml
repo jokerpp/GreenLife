@@ -78,6 +78,7 @@
                 android:layout_marginBottom="10dip"
                 android:background="@color/white"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:padding="10dip" >
 
                 <TextView
@@ -142,11 +143,26 @@
             </LinearLayout>
 
             <cn.crane.framework.view.MyGridView
-                android:id="@+id/grid_category"
+                android:id="@+id/grid_category_auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dip"
                 android:layout_marginTop="3dip"
+                android:background="@color/white"
+                android:cacheColorHint="@color/transparent"
+                android:gravity="center"
+                android:horizontalSpacing="3dip"
+                android:listSelector="@color/transparent"
+                android:numColumns="4"
+                android:padding="10dip"
+                android:verticalSpacing="20dip" >
+            </cn.crane.framework.view.MyGridView>
+            <cn.crane.framework.view.MyGridView
+                android:id="@+id/grid_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dip"
+                android:layout_marginTop="13dip"
                 android:background="@color/white"
                 android:cacheColorHint="@color/transparent"
                 android:gravity="center"
