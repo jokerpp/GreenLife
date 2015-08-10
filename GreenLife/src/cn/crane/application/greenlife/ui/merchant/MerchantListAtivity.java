@@ -5,9 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONArray;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -43,6 +48,8 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 	private String type;
 	private String token;
 	
+	private PullToRefreshListView mPullRefreshListView;
+	
 
 
 	@Override
@@ -61,12 +68,50 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 	protected void bindViews() {
 		btnBack.setOnClickListener(this);
 
+
+		 mPullRefreshListView = (PullToRefreshListView) findViewById(R.id.pull_refresh_list);
+
+	        // Set a listener to be invoked when the list should be refreshed.
+	     mPullRefreshListView.setOnRefreshListener(onRefreshListener2);
+
+	     mPullRefreshListView.setMode(Mode.BOTH);
+	        
+
+	     lv = mPullRefreshListView.getRefreshableView();
+		
 		adapter = new ListMerchantAdapter<MerchantItem>(this, arrMerchantItems);
 		adapter.setOnItemClickListener(onItemClickListener);
 		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(this);
 
 	}
+	
+	private OnRefreshListener2<ListView> onRefreshListener2 = new OnRefreshListener2<ListView>()
+		    {
+
+		        @Override
+		        public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView)
+		        {
+		        	  String label = DateUtils.formatDateTime(MerchantListAtivity.this, System.currentTimeMillis(),
+		                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+		                // Update the LastUpdatedLabel
+		                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+		                // Do work to refresh the list here.
+		                resetPage();
+		                
+		                getMerchantsList();
+		            
+		        }
+
+		        @Override
+		        public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView)
+		        {
+		            // TODO Auto-generated method stub
+		        	  getMerchantsList();
+		        }
+		    };
 
 	@Override
 	protected void init() {
@@ -137,18 +182,64 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 			}
 		});
 		task_Post_getMerchantsList.execute();
-		displayLoadingDlg(R.string.loading);
+		if(page == PAGE_START)
+		{
+			displayLoadingDlg(R.string.loading);
+		}
 		
 	}
 	
 	private void refreshUI(RE_getMerchantsList result) {
 		if(result != null && result.getResultList() != null)
 		{
-			this.arrMerchantItems.clear();
-			this.arrMerchantItems.addAll(result.getResultList());
-			adapter.notifyDataSetChanged();
+//			this.arrMerchantItems.clear();
+//			this.arrMerchantItems.addAll(result.getResultList());
+//			adapter.notifyDataSetChanged();
+			updateProgramList(result.getResultList(), result.getPageIndex(), result.getTotal());
 		}
 	}
+	
+	 private void updateProgramList(List<MerchantItem> arrMerchantItems, int curPage, int totalCount)
+	    {
+	        {
+	            if (curPage == 1)
+	            {
+	            	
+	                this.arrMerchantItems.clear();
+	                this.arrMerchantItems.addAll(arrMerchantItems);
+	                adapter.notifyDataSetChanged();
+	            }
+	            else
+	            {
+	            	  this.arrMerchantItems.addAll(arrMerchantItems);
+		               adapter.notifyDataSetChanged();
+	            }
+	        }
+
+	        mPullRefreshListView.onRefreshComplete();
+	        if (pageCount > 0)
+	        {
+	            if ((curPage * pageCount) < totalCount)
+	            {
+	            	 mPullRefreshListView.setMode(Mode.BOTH);
+	            	 page ++;
+	            	
+	            }
+	               
+	            else
+	                mPullRefreshListView.setMode(Mode.PULL_FROM_START);
+	        }
+	        else
+	        {
+	            mPullRefreshListView.setMode(Mode.PULL_FROM_START);
+	        }
+
+//	        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm z");
+//	        String lastUpdated = format.format(new Date(System
+//	                .currentTimeMillis()));
+//	        mPullRefreshListView.getLoadingLayoutProxy().setLastUpdatedLabel(
+//	                "Last Updated:" + lastUpdated);
+	    }
 
 	private String getMerchantType() {
 		return type;

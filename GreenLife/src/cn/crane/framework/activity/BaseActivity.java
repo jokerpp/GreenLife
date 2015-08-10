@@ -46,7 +46,8 @@ public abstract class BaseActivity extends FragmentActivity implements
 
 	// page 当前页数
 	// pageCount
-	protected int page = 0;
+	protected static final int PAGE_START = 0; 
+	protected int page = PAGE_START;
 	protected int pageCount = 10;
 	private SwipeBackLayout mSwipeBackLayout;
 	private LinearLayout llRootView;
@@ -56,6 +57,10 @@ public abstract class BaseActivity extends FragmentActivity implements
 	// public Class<BaseActivity>[] activitiesDotCheckToken = {
 	// LoginActivity.class, RegisterActivity.class };
 
+	protected void resetPage() {
+		page = PAGE_START;
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

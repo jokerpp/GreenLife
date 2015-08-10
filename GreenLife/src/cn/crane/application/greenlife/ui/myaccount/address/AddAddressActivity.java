@@ -200,11 +200,11 @@ public class AddAddressActivity extends BaseActivity {
 		String doorNum = et_door_num.getText().toString().trim();
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userToken", DataManager.userToken);
-		map.put("contactName", URLEncoder.encode(name));
+		map.put("contactName", name);
 		map.put("gender", sex);
-		map.put("mobile", URLEncoder.encode(mobile));
-		map.put("address", URLEncoder.encode(address));
-		map.put("doorCode", URLEncoder.encode(doorNum));
+		map.put("mobile", mobile);
+		map.put("address", address);
+		map.put("doorCode", doorNum);
 		map.put("longitude", DataManager.longitude);
 		map.put("latitude", DataManager.latitude);
 		map.put("isDefault", "1");

@@ -38,4 +38,5 @@
         <dimen name="myaccount_login_item_textsize">16sp</dimen>
         
          <dimen name="txt_title_add_address">70dip</dimen>
+         <dimen name="list_divider_height">0.5dip</dimen>
 </resources>
