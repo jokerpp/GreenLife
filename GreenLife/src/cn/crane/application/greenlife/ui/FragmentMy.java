@@ -11,6 +11,7 @@ import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
 import cn.crane.application.greenlife.ui.myaccount.RegisterActivity;
+import cn.crane.application.greenlife.ui.myaccount.RegisterActivity_old;
 import cn.crane.application.greenlife.ui.myaccount.ResetPasswordActivity;
 import cn.crane.application.greenlife.ui.myaccount.address.MyAddressActivity;
 import cn.crane.application.greenlife.ui.myaccount.collect.MyCollectAtivity;
@@ -87,9 +88,11 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(getActivity(), RegisterActivity.class);
-				startActivity(intent);
+//				Intent intent = new Intent();
+//				intent.setClass(getActivity(), RegisterActivity_old.class);
+//				startActivity(intent);
+				
+				RegisterActivity.show(getActivity());
 			}
 		});
 	}

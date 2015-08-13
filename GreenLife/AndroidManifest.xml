@@ -211,6 +211,12 @@
         </activity>
         <!-- 注册 -->
         <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.RegisterActivity_old"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- 注册 -->
+        <activity
             android:name="cn.crane.application.greenlife.ui.myaccount.RegisterActivity"
             android:label="@string/app_name" 
             android:screenOrientation="portrait">

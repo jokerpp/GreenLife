@@ -3,9 +3,13 @@ package cn.crane.application.greenlife.data;
 import java.util.HashMap;
 import android.content.Context;
 import android.text.TextUtils;
+import android.widget.EditText;
+import cn.crane.application.greenlife.App;
+import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.model.Result;
+import cn.crane.application.greenlife.model.result.RE_Login;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
 import com.alibaba.fastjson.JSONArray;
 
@@ -249,6 +253,56 @@ public class DataManager {
 		});
 		task_Post_submitSuggestion.execute();
 		if (callback != null) {
+			callback.onPre();
+		}
+	}
+	
+	
+	/**
+	 * Get Captcha
+	 */
+	public void getCaptcha(EditText et_mobile,final Callback callback) {
+//		手机号	moblie	必填	string
+		String tel = et_mobile.getText().toString().trim();
+		if(TextUtils.isEmpty(tel))
+		{
+			App.showToast(et_mobile.getHint().toString());
+			return;
+		}
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("mobile", tel);
+		Task_Post.clearTask(task_Post_getCaptcha);
+		task_Post_getCaptcha = new Task_Post(map, API.API_sendValidateCode,
+				new Task_Post.OnPostEndListener() {
+
+					@Override
+					public void onPostEnd(String sResult) {
+						RE_Login result = new RE_Login();
+						try {
+							result = JSONArray.parseObject(sResult,
+									RE_Login.class);
+							if (result.isSuccess()) {
+								App.showToast(R.string.getcaptcha_success);
+							} else {
+								App.showToast(result.getResultMessage());
+							}
+							if(callback != null)
+							{
+								callback.onPost(result);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+							// App.showToast(R.string.api_error_code_6);
+							if(callback != null)
+							{
+								callback.onError();
+							}
+						}
+					}
+				});
+		task_Post_getCaptcha.execute();
+		if(callback != null)
+		{
 			callback.onPre();
 		}
 	}
