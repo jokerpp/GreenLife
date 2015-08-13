@@ -20,7 +20,9 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.crane.application.greenlife.App;
+import cn.crane.application.greenlife.Constant;
 import cn.crane.application.greenlife.R;
+import cn.crane.application.greenlife.TestConfig;
 import cn.crane.application.greenlife.adapter.merchant.ListOrderFoodsAdapter;
 import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
@@ -30,7 +32,6 @@ import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.model.item.AddressItem;
 import cn.crane.application.greenlife.model.item.PayItem;
 import cn.crane.application.greenlife.model.result.RE_getMerchantDishesList;
-import cn.crane.application.greenlife.model.result.RE_getMerchantsDetailsInfo;
 import cn.crane.application.greenlife.ui.myaccount.address.MyAddressActivity;
 import cn.crane.framework.activity.BaseActivity;
 
@@ -40,6 +41,7 @@ import cn.crane.framework.activity.BaseActivity;
  * 
  */
 public class OrderConfirmActivity extends BaseActivity {
+	public static final String MERCHANT_TOKEN = "merchantToken";
 	public static final int requestCode = 1000;
 	private TextView tvOrderConfirm;
 	
@@ -53,6 +55,7 @@ public class OrderConfirmActivity extends BaseActivity {
     private LinearLayout ll_coupon;
     private RadioButton radio_pay_default;
     private RadioButton radio_pay_alipay;
+    private RadioButton radio_pay_wechat;
     private RadioGroup radioGroup;
     private TextView tv_send_time;
     private EditText et_mark;
@@ -71,7 +74,7 @@ public class OrderConfirmActivity extends BaseActivity {
 	
 	private String payType = API_Contant.PAYTYPE_DEFAULT;
 	
-	private RE_getMerchantsDetailsInfo merchantsDetailsInfo = new RE_getMerchantsDetailsInfo();
+	private String merchantToken = "";
 
 	private Task_Post task_Post_generateOrder;
 	private AddressItem addressItem = null;
@@ -96,6 +99,7 @@ public class OrderConfirmActivity extends BaseActivity {
         ll_coupon = (LinearLayout) findViewById(R.id.ll_coupon);
         radio_pay_default = (RadioButton) findViewById(R.id.radio_pay_default);
         radio_pay_alipay = (RadioButton) findViewById(R.id.radio_pay_alipay);
+        radio_pay_wechat = (RadioButton) findViewById(R.id.radio_pay_wechat);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         tv_send_time = (TextView) findViewById(R.id.tv_send_time);
         et_mark = (EditText) findViewById(R.id.et_mark);
@@ -103,6 +107,16 @@ public class OrderConfirmActivity extends BaseActivity {
         tv_coupon_tips = (TextView) findViewById(R.id.tv_coupon_tips);
         ll_content = (LinearLayout) findViewById(R.id.ll_content);
         tv_total_price = (TextView) findViewById(R.id.tv_total_price);
+        
+        if(!TestConfig.IS_SURPORT_PAY_ONLINE)
+        {
+        	  radio_pay_wechat.setVisibility(View.GONE);
+              radio_pay_alipay.setVisibility(View.GONE);
+              findViewById(R.id.view_line1).setVisibility(View.GONE);
+              findViewById(R.id.view_line2).setVisibility(View.GONE);
+        }
+        
+      
 	}
 
 	@Override
@@ -130,7 +144,7 @@ public class OrderConfirmActivity extends BaseActivity {
 				adapter.notifyDataSetChanged();
 				
 			}
-			merchantsDetailsInfo = (RE_getMerchantsDetailsInfo) getIntent().getBundleExtra(FoodItem.TAG).getSerializable(RE_getMerchantsDetailsInfo.TAG);
+			merchantToken = getIntent().getBundleExtra(FoodItem.TAG).getString(MERCHANT_TOKEN);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -265,7 +279,7 @@ public class OrderConfirmActivity extends BaseActivity {
 			return;
 		}
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("merchantToken", merchantsDetailsInfo != null ? merchantsDetailsInfo.getMerchantToken() : "");
+		map.put("merchantToken", merchantToken);
 		map.put("userToken", DataManager.userToken);
 		map.put("couponToken", "");
 		map.put("deliveryToken", addressItem == null ? "" : addressItem.getDeliveryToken());
@@ -273,17 +287,17 @@ public class OrderConfirmActivity extends BaseActivity {
 		map.put("deliveryType", "1");
 		map.put("discountType", "0");
 		map.put("requestDeliveryDateTimeStr", "2015-07-01 12:45:00");
-		map.put("userNote", "nothing");
+		map.put("userNote", et_mark.getText().toString().trim());
 		
 		HashMap<String, String[]> mapArr = new HashMap<String, String[]>();
-		if(arrFoodItems != null && arrFoodItems.size() > 2)
+		if(arrFoodItems != null && arrFoodItems.size() > 0)
 		{
-			String [] dishesTokens = new String[arrFoodItems.size()-2];
-			String [] amounts = new String[arrFoodItems.size()-2];
-			for(int i = 2;i<arrFoodItems.size();i++)
+			String [] dishesTokens = new String[arrFoodItems.size()];
+			String [] amounts = new String[arrFoodItems.size()];
+			for(int i = 0;i<arrFoodItems.size();i++)
 			{
-				dishesTokens[i - 2] = arrFoodItems.get(i).getDishesToken();
-				amounts[i - 2] = arrFoodItems.get(i).getiCountChoose() +"";
+				dishesTokens[i] = arrFoodItems.get(i).getDishesToken();
+				amounts[i] = arrFoodItems.get(i).getiCountChoose() +"";
 			}
 			mapArr.put("dishesToken", dishesTokens);
 			mapArr.put("amount", amounts);
@@ -301,6 +315,12 @@ public class OrderConfirmActivity extends BaseActivity {
 					result = JSONArray.parseObject(sResult,
 							RE_getMerchantDishesList.class);
 					if (result.isSuccess()) {
+						if(payType == API_Contant.PAYTYPE_DEFAULT)
+						{
+							App.showToast(R.string.order_commit_success);
+							finish();
+							return;
+						}
 //						refreshUI(result);
 						PayItem payItem = new PayItem();
 						payItem.setOrderToken(result.getData());
@@ -323,11 +343,11 @@ public class OrderConfirmActivity extends BaseActivity {
 		
 	}
 	
-	public static void show(Context context,ArrayList<FoodItem> arrFoodItemsList,RE_getMerchantsDetailsInfo merchantsDetailsInfo) {
+	public static void show(Context context,ArrayList<FoodItem> arrFoodItemsList,String merchantToken) {
 		Intent intent = createIntent(context, OrderConfirmActivity.class);
 		Bundle bundle = new Bundle();
 		bundle.putSerializable(FoodItem.TAG, arrFoodItemsList);
-		bundle.putSerializable(RE_getMerchantsDetailsInfo.TAG, merchantsDetailsInfo);
+		bundle.putString(MERCHANT_TOKEN, merchantToken);
 		
 		intent.putExtra(FoodItem.TAG, bundle);
 		context.startActivity(intent);

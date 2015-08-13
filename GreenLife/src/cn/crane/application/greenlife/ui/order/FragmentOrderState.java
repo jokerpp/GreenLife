@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import cn.crane.application.greenlife.App;
 import cn.crane.application.greenlife.R;
+import cn.crane.application.greenlife.TestConfig;
 import cn.crane.application.greenlife.adapter.order.ListOrderStateAdapter;
 import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
@@ -83,13 +84,20 @@ public class FragmentOrderState extends BaseFragment implements OnClickListener 
 			break;
 		case STATE_1:
 			tvOptionCancel.setVisibility(View.VISIBLE);
-			tvOptionPay.setVisibility(View.VISIBLE);
+			 if(TestConfig.IS_SURPORT_PAY_ONLINE)
+			 {
+				 tvOptionPay.setVisibility(View.VISIBLE);
+			 }
+			
 			tvOptionReminder.setVisibility(View.GONE);
 			tvOptionComment.setVisibility(View.GONE);
 			break;
 		case STATE_2:
 			tvOptionCancel.setVisibility(View.VISIBLE);
-			tvOptionPay.setVisibility(View.VISIBLE);
+			 if(TestConfig.IS_SURPORT_PAY_ONLINE)
+			 {
+				 tvOptionPay.setVisibility(View.VISIBLE);
+			 }
 			tvOptionReminder.setVisibility(View.GONE);
 			tvOptionComment.setVisibility(View.GONE);
 			break;

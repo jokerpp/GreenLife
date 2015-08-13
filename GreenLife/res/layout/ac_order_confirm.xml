@@ -143,6 +143,7 @@
                     android:textColor="@color/txt_black" />
 
                 <View
+                    android:id="@+id/view_line1"
                     style="@style/line_gray"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="10dip" />
@@ -159,6 +160,7 @@
                     android:text="@string/order_pay_type_alipay"
                     android:textColor="@color/txt_black" />
                 <View
+                      android:id="@+id/view_line2"
                     style="@style/line_gray"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="10dip" />

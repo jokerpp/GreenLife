@@ -227,7 +227,7 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 				
 				arrFoodItems.addAll(arrFoodItemsSelect);
 				
-				OrderConfirmActivity.show(getActivity(),arrFoodItems,getMerchantsDetailsInfo);
+				OrderConfirmActivity.show(getActivity(),arrFoodItems,getMerchantToken());
 			}
 			break;
 
