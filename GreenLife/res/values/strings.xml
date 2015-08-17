@@ -126,7 +126,7 @@
     <string name="make_phone_call">是否拨打：</string>
     <string name="news_detail">详情</string>
     
-     <string name="format_food_detail" formatted="false">已售%s份  推荐%s</string>
+     <string name="format_food_detail" formatted="false">已售%s%s  推荐%s</string>
     <string name="format_total_money">合计：¥%s</string>
     <string name="txt_food_send_price">配送费</string>
     <string name="txt_food_box_price">餐盒费</string>

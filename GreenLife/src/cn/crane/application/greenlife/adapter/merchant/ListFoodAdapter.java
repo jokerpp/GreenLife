@@ -195,7 +195,7 @@ public class ListFoodAdapter extends BaseExpandableListAdapter implements OnClic
         addMinus.setOnNumberChangedListener(onNumberChangedListener);
         if (item != null) {
 			tvTitle.setText(item.getDishesName());
-			tvDetail.setText(context.getString(R.string.format_food_detail,item.getSaleAmoun(),item.getRecommendAmount()));
+			tvDetail.setText(context.getString(R.string.format_food_detail,item.getSaleAmoun(),item.getUnit(),item.getRecommendAmount()));
 			tvPrice.setText(context.getString(R.string.txt_format_price, item.getPreferentialPrice()));
 			tvKexuan.setVisibility(View.GONE);
 			tvSleep.setVisibility(View.GONE);

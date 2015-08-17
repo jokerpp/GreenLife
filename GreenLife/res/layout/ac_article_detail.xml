@@ -43,48 +43,65 @@
             android:textColor="@color/txt_gray"
             android:visibility="gone" />
     </RelativeLayout>
-
-    <cn.crane.framework.view.smartimage.SmartImageView
-        android:id="@+id/iv_image"
+       <cn.crane.framework.view.smartimage.SmartImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test_index_image" />
+<WebView android:id="@+id/web"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test_index_image" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_marginBottom="10dip"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_marginTop="10dip"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="vertical" >
+        android:fillViewport="true"
+        android:scrollbars="none" >
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dip"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:text="XXX水果店"
-            android:textColor="@color/txt_black"
-            android:textSize="15sp" />
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tv_detail"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="5dip"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="top|left"
-            android:singleLine="false"
-            android:text="文章详情"
-            android:textColor="@color/txt_gray"
-            android:textSize="12sp" />
-    </LinearLayout>
+         
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="10dip"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dip"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="XXX水果店"
+                    android:textColor="@color/txt_black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="5dip"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="top|left"
+                    android:singleLine="false"
+                    android:text="文章详情"
+                    android:textColor="@color/txt_gray"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

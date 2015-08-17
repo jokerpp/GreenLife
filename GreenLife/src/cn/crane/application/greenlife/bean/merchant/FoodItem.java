@@ -2,6 +2,8 @@ package cn.crane.application.greenlife.bean.merchant;
 
 import java.io.Serializable;
 
+import android.text.TextUtils;
+
 import cn.crane.application.greenlife.api.API_Contant;
 
 
@@ -102,6 +104,10 @@ public class FoodItem implements FoodType,Serializable{
 	}
 
 	public String getSaleAmoun() {
+		if(TextUtils.isEmpty(saleAmoun) || "null".equalsIgnoreCase(saleAmoun))
+		{
+			return "0";
+		}
 		return saleAmoun;
 	}
 

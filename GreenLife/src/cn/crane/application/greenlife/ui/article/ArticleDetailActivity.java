@@ -7,9 +7,12 @@ import com.alibaba.fastjson.JSONArray;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 import cn.crane.application.greenlife.App;
@@ -34,6 +37,8 @@ public class ArticleDetailActivity extends BaseActivity {
 	private SmartImageView iv;
 	private TextView tvArticleTitle;
 	private TextView tvArticleDetail;
+	private WebView webView;
+	
 	private Task_Post task_Post_getNewsDetails;
 	private String newsToken;
 	@Override
@@ -50,11 +55,16 @@ public class ArticleDetailActivity extends BaseActivity {
 		iv = (SmartImageView) findViewById(R.id.iv_image);
 		tvArticleTitle = (TextView) findViewById(R.id.tv_name);
 		tvArticleDetail = (TextView) findViewById(R.id.tv_detail);
+		webView = (WebView) findViewById(R.id.web);
 	}
 
 	@Override
 	protected void bindViews() {
 		btnBack.setOnClickListener(this);
+		
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+		webView.setWebViewClient(client);
 	}
 
 	@Override
@@ -62,7 +72,23 @@ public class ArticleDetailActivity extends BaseActivity {
 		iv.setVisibility(View.GONE);
 		newsToken = getIntent().getStringExtra(NEWS_TOKEN);
 		getNewsDetails();
+		
+		webView.setVisibility(View.VISIBLE);
 	}
+	
+	WebViewClient client = new WebViewClient() {
+		@Override
+		public void onPageStarted(WebView view, String url, Bitmap favicon) {
+			// TODO Auto-generated method stub
+			displayLoadingDlg("");
+			super.onPageStarted(view, url, favicon);
+
+		}
+
+		public void onPageFinished(WebView webview, String url) {
+			dismissLoadingDlg();
+		}
+	};
 	
 	private void getNewsDetails() {
 //		新闻加密ID	newsToken	必填	String
@@ -113,6 +139,8 @@ public class ArticleDetailActivity extends BaseActivity {
 				tvArticleTitle.setText(result.getNewsTitle());
 			}
 			tvArticleDetail.setText(Html.fromHtml(result.getNewsContent()));
+			
+			webView.loadDataWithBaseURL(null, result.getNewsContent(), "text/html","UTF-8", null);
 		}
 	}
 
