@@ -20,7 +20,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.crane.application.greenlife.App;
-import cn.crane.application.greenlife.Constant;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.TestConfig;
 import cn.crane.application.greenlife.adapter.merchant.ListOrderFoodsAdapter;
@@ -108,8 +107,10 @@ public class OrderConfirmActivity extends BaseActivity {
         ll_content = (LinearLayout) findViewById(R.id.ll_content);
         tv_total_price = (TextView) findViewById(R.id.tv_total_price);
         
+        radio_pay_default.setChecked(true);
         if(!TestConfig.IS_SURPORT_PAY_ONLINE)
         {
+        	
         	  radio_pay_wechat.setVisibility(View.GONE);
               radio_pay_alipay.setVisibility(View.GONE);
               findViewById(R.id.view_line1).setVisibility(View.GONE);
@@ -125,6 +126,7 @@ public class OrderConfirmActivity extends BaseActivity {
 		adapter = new ListOrderFoodsAdapter(this, arrFoodItems);
 		lvFoods.setAdapter(adapter);
 		
+		btn_back.setOnClickListener(this);
 		tvOrderConfirm.setOnClickListener(this);
 		ll_address.setOnClickListener(this);
 		ll_coupon.setOnClickListener(this);
@@ -135,6 +137,7 @@ public class OrderConfirmActivity extends BaseActivity {
 
 	@Override
 	protected void init() {
+		
 		try {
 			List<FoodItem> arrFoodItems = (List<FoodItem>) getIntent().getBundleExtra(FoodItem.TAG).getSerializable(FoodItem.TAG);
 			if(arrFoodItems != null)
@@ -219,7 +222,8 @@ public class OrderConfirmActivity extends BaseActivity {
 				}
 			}
 		}
-		tv_total_price.setText(getString(R.string.order_total,totalDiscountMoney + "",totalMoney +""));
+//		tv_total_price.setText(getString(R.string.order_total,totalDiscountMoney + "",totalMoney +""));
+		tv_total_price.setText(getString(R.string.order_total_only,totalMoney +""));
 		return 0;
 	}
 	

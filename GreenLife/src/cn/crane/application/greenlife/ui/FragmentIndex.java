@@ -26,13 +26,12 @@ import cn.crane.application.greenlife.adapter.index.PictureInfo;
 import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.api.Task_Post;
-import cn.crane.application.greenlife.bean.index.ArticleCategoryItem;
 import cn.crane.application.greenlife.bean.index.GridCategoryItem;
-import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.model.item.MerchantGroupItem;
+import cn.crane.application.greenlife.model.item.MerchantItem;
 import cn.crane.application.greenlife.model.item.NewsGroupItem;
 import cn.crane.application.greenlife.model.result.RE_getMerchantGroupList;
-import cn.crane.application.greenlife.model.result.RE_getMyOrderList;
+import cn.crane.application.greenlife.model.result.RE_getMerchantsList;
 import cn.crane.application.greenlife.model.result.RE_getNewsGroupList;
 import cn.crane.application.greenlife.ui.article.ArticleListActivity;
 import cn.crane.application.greenlife.ui.merchant.FoodListActivity;
@@ -143,6 +142,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	};
 	private Task_Post task_Post_getNewsGroupList;
 	private Task_Post task_Post_getMerchantGroupList;
+	private Task_Post task_Post_advertisedMerchantList;
 	
 	@Override
 	protected void init() {
@@ -158,6 +158,9 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		getNewsGroupList();
 		
 		getMerchantGroupList();
+		
+		
+		advertisedMerchantList();
 	}
 	
 	private void loadData() {
@@ -192,15 +195,15 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 //		}
 //		articleCatedoryAdapter.notifyDataSetChanged();
 		
-		arrPictureInfos.clear();
-		for(int i = 0;i<3;i++)
-		{
-			PictureInfo info = new PictureInfo();
-			info.setDefaultImageRes(R.drawable.test_index_image);
-			info.setImageUrl("");
-			arrPictureInfos.add(info);
-		}
-		carouselView.setArrPictureInfos(arrPictureInfos);
+//		arrPictureInfos.clear();
+//		for(int i = 0;i<3;i++)
+//		{
+//			PictureInfo info = new PictureInfo();
+//			info.setDefaultImageRes(R.drawable.test_index_image);
+//			info.setImageUrl("");
+//			arrPictureInfos.add(info);
+//		}
+//		carouselView.setArrPictureInfos(arrPictureInfos);
 	}
 	
 	private void getNewsGroupList() {
@@ -236,6 +239,45 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		displayLoadingDlg(R.string.loading);
 		
 	}
+	private void advertisedMerchantList() {
+//		用户加密ID	userToken	必填	String	
+//		时间戳	timeStamp		Long	
+//		请求页码	pageIndex		Int	
+//		每页记录	pageSize		Int	
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("timeStamp", API_Contant.getTimeStamp());
+		
+		Task_Post.clearTask(task_Post_advertisedMerchantList);
+		task_Post_advertisedMerchantList = new Task_Post(map, API.API_advertisedMerchantList,
+				new Task_Post.OnPostEndListener() {
+			
+			@Override
+			public void onPostEnd(String sResult) {
+				dismissLoadingDlg();
+				RE_getMerchantsList result = new RE_getMerchantsList();
+				try {
+					result = JSONArray.parseObject(sResult,
+							RE_getMerchantsList.class);
+						refreshAdList(result);
+				} catch (Exception e) {
+					e.printStackTrace();
+//							App.showToast(R.string.api_error_code_6);
+				}
+			}
+		});
+		task_Post_advertisedMerchantList.execute();
+		displayLoadingDlg(R.string.loading);
+		
+	}
+	protected void refreshAdList(RE_getMerchantsList result) {
+		arrPictureInfos.clear();
+		if(result != null && result.getResultList() != null)
+		{
+			arrPictureInfos.addAll(result.getResultList());
+		}
+		carouselView.setArrPictureInfos(arrPictureInfos);
+	}
+
 	private void getMerchantGroupList() {
 //		用户加密ID	userToken	必填	String	
 //		时间戳	timeStamp		Long	
@@ -346,7 +388,11 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		
 		@Override
 		public void onItemClick(CarouselItemInfo pictureInfo) {
-			FoodListActivity.show(getActivity(),"");
+			if(pictureInfo instanceof MerchantItem)
+			{
+				FoodListActivity.show(getActivity(),((MerchantItem)pictureInfo).getMerchantToken());
+			}
+			
 		}
 		
 		@Override
@@ -360,5 +406,6 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		super.onDestroy();
 		Task_Post.clearTask(task_Post_getNewsGroupList);
 		Task_Post.clearTask(task_Post_getMerchantGroupList);
+		Task_Post.clearTask(task_Post_advertisedMerchantList);
 	};
 }

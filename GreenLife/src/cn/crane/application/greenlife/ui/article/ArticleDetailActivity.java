@@ -140,7 +140,17 @@ public class ArticleDetailActivity extends BaseActivity {
 			}
 			tvArticleDetail.setText(Html.fromHtml(result.getNewsContent()));
 			
-			webView.loadDataWithBaseURL(null, result.getNewsContent(), "text/html","UTF-8", null);
+			StringBuilder builder = new StringBuilder();
+			builder.append("<html>");
+			builder.append("<body>");
+			
+			builder.append(result.getNewsContent());
+			
+			builder.append("</body>");
+			builder.append("</html>");
+			
+			
+			webView.loadDataWithBaseURL(null, builder.toString(), "text/html","UTF-8", null);
 		}
 	}
 

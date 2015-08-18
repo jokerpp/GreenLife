@@ -50,6 +50,7 @@
     <string name="txt_send_box_price">餐盒费</string>
     <string name="txt_coupon_price">宅家代金券</string>
     <string name="order_total" formatted="false">已经优惠:¥%s  总计:¥%s</string>
+    <string name="order_total_only">总计:¥%s</string>
     <string name="order_confirm">确认下单</string>
     
     <string name="pay_title">支付收银台</string>

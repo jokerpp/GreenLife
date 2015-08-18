@@ -24,6 +24,8 @@ public class API {
 	public static final String API_ADDRESS = HOST + "/";
 	
 	
+	public static final String API_advertisedMerchantList = "zj/json/advertisedMerchantList.action";
+	
 	public static final String API_getNewsGroupList = "zj/json/getNewsGroupList.action";
 	public static final String API_getNewsList = "zj/json/getNewsList.action";
 	public static final String API_getNewsDetails = "zj/json/getNewsDetails.action";
@@ -80,7 +82,7 @@ public class API {
 	public static final String API_searchDishesList = "zj/json/searchDishesList.action";
 	public static final String API_searchDishesGroupList = "zj/json/searchDishesGroupList.action";
 	public static final String API_recommendMerchantList = "zj/json/recommendMerchantList.action";
-	public static final String API_advertisedMerchantList = "zj/json/advertisedMerchantList.action";
+	
 	
 	public static final String API_getTopNews = "zj/json/getTopNews.action";
 	

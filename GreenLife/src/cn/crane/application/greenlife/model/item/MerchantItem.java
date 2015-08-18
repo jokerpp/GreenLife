@@ -2,6 +2,7 @@ package cn.crane.application.greenlife.model.item;
 
 import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.model.BaseModel;
+import cn.crane.framework.view.carouselview.CarouselItemInfo;
 
 
 /**
@@ -9,7 +10,7 @@ import cn.crane.application.greenlife.model.BaseModel;
  * @version Create Time：Jun 23, 2015 10:33:08 PM
  * 
  */
-public class MerchantItem extends BaseModel {
+public class MerchantItem extends BaseModel implements CarouselItemInfo {
 
 	public static final String TAG = MerchantItem.class.getSimpleName();
 	/**
@@ -336,5 +337,29 @@ public class MerchantItem extends BaseModel {
 			icons ++;
 		}
 		return icons > 1;
+	}
+
+
+
+	@Override
+	public String getImageUrl() {
+		// TODO Auto-generated method stub
+		return merchantPictrue;
+	}
+
+
+
+	@Override
+	public int getImageResourse() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+	@Override
+	public int getDefaultResourse() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
