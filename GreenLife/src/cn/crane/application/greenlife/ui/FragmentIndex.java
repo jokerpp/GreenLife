@@ -14,11 +14,14 @@ import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
+import cn.crane.application.greenlife.TestActivity;
+import cn.crane.application.greenlife.TestConfig;
 import cn.crane.application.greenlife.adapter.index.GridCatedoryAdapter;
 import cn.crane.application.greenlife.adapter.index.GridCatedoryServerAdapter;
 import cn.crane.application.greenlife.adapter.index.ListArticleCatedoryAdapter;
@@ -57,6 +60,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	private TextView tvYuding;
 	private TextView tvMeishi;
 	
+	private Button btn_right;
 	private EditText et_search;
 	
 	private GridCatedoryAdapter gridCatedoryAdapter;
@@ -87,6 +91,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		tvYuding= (TextView) findViewById(R.id.tv_yuding);
 		tvMeishi = (TextView) findViewById(R.id.tv_meishi);
 		et_search = (EditText) findViewById(R.id.et_search);
+		btn_right = (Button) findViewById(R.id.btn_right);
 	}
 
 	@Override
@@ -99,6 +104,7 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		tvYouhui.setOnClickListener(this);
 		tvYuding.setOnClickListener(this);
 		tvMeishi.setOnClickListener(this);
+		btn_right.setOnClickListener(this);
 		
 		carouselView.setOnItemListener(itemListener);
 		
@@ -135,7 +141,8 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 			if(keyCode == KeyEvent.KEYCODE_ENTER)
 			{
 				String key = et_search.getText().toString().trim();
-				MerchantListAtivity.show(getActivity(), key);
+//				MerchantListAtivity.show(getActivity(), key);
+				SearchResultAtivity.show(getActivity(), 0, key);
 			}
 			return false;
 		}
@@ -161,6 +168,14 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		
 		
 		advertisedMerchantList();
+		
+		if(TestConfig.TEST)
+		{
+			btn_right.setVisibility(View.VISIBLE);
+		}else
+		{
+			btn_right.setVisibility(View.GONE);
+		}
 	}
 	
 	private void loadData() {
@@ -348,6 +363,9 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 			break;
 		case R.id.tv_meishi:
 			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_MEISHI);
+			break;
+		case R.id.btn_right:
+			TestActivity.show(getActivity());
 			break;
 
 		default:

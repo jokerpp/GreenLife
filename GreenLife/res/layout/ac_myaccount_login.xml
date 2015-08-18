@@ -34,8 +34,9 @@
             android:gravity="center_vertical|right"
             android:minWidth="70dip"
             android:paddingLeft="10dip"
-            android:textColor="@color/txt_gray"
-            android:visibility="gone" />
+            android:text="@string/register_text"
+            android:textColor="@color/white"
+            android:visibility="visible" />
     </RelativeLayout>
 
     <LinearLayout

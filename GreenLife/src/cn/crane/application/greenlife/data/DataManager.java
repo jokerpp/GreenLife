@@ -10,7 +10,9 @@ import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.model.Result;
 import cn.crane.application.greenlife.model.result.RE_Login;
+import cn.crane.application.greenlife.model.result.RE_getInfoForUser;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
+
 import com.alibaba.fastjson.JSONArray;
 
 
@@ -303,6 +305,37 @@ public class DataManager {
 		task_Post_getCaptcha.execute();
 		if(callback != null)
 		{
+			callback.onPre();
+		}
+	}
+	
+	public void getInfoForUser(final Callback callback) {
+		// 用户ID加密 userToken 必填 String
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("userToken", userToken);
+		Task_Post.clearTask(task_Post_getInfoForUser);
+		task_Post_getInfoForUser = new Task_Post(map, API.API_getInfoForUser,
+				new Task_Post.OnPostEndListener() {
+
+					@Override
+					public void onPostEnd(String sResult) {
+						RE_getInfoForUser result = new RE_getInfoForUser();
+						try {
+							result = JSONArray.parseObject(sResult,
+									RE_getInfoForUser.class);
+							if (callback != null) {
+								callback.onPost(result);
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+							if (callback != null) {
+								callback.onError();
+							}
+						}
+					}
+				});
+		task_Post_getInfoForUser.execute();
+		if (callback != null) {
 			callback.onPre();
 		}
 	}

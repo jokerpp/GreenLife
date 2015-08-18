@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import cn.crane.application.greenlife.R;
 import cn.crane.application.greenlife.data.DataManager;
+import cn.crane.application.greenlife.model.Result;
+import cn.crane.application.greenlife.model.result.RE_getInfoForUser;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
 import cn.crane.application.greenlife.ui.myaccount.RegisterActivity;
 import cn.crane.application.greenlife.ui.myaccount.RegisterActivity_old;
@@ -17,6 +19,7 @@ import cn.crane.application.greenlife.ui.myaccount.address.MyAddressActivity;
 import cn.crane.application.greenlife.ui.myaccount.collect.MyCollectAtivity;
 import cn.crane.application.greenlife.ui.myaccount.comment.MyCommentsAtivity;
 import cn.crane.framework.fragment.BaseFragment;
+import cn.crane.framework.utils.myaccount.MyaccountRoundImageView;
 import cn.crane.framework.utils.myaccount.PullToZoomScrollViewEx;
 
 /**
@@ -34,6 +37,9 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 	private LinearLayout myaccount_collect;
 	private LinearLayout myaccount_comments;
 	private LinearLayout myaccount_editpasswd;
+	private TextView tv_user_name;
+	private MyaccountRoundImageView iv_user_head;
+	private View ll_action_button;
 
 	@Override
 	protected int getLayoutId() {
@@ -100,7 +106,7 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 	@Override
 	protected void init() {
 		// TODO Auto-generated method stub
-
+		tv_user_name.setText("");
 	}
 
 	private void loadViewForCode() {
@@ -113,10 +119,57 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 				R.layout.profile_content_view, null, false);
 		login = (TextView) headView.findViewById(R.id.tv_login);
 		register = (TextView) headView.findViewById(R.id.tv_register);
+		tv_user_name = (TextView) headView.findViewById(R.id.tv_user_name);
+		iv_user_head = (MyaccountRoundImageView) headView.findViewById(R.id.iv_user_head);
+		ll_action_button =  headView.findViewById(R.id.ll_action_button);
 		scrollView.setHeaderView(headView);
 		scrollView.setZoomView(zoomView);
 		scrollView.setScrollContentView(conentView);
 
+	}
+	
+	private void onLoginStateChanged(boolean isLogin) {
+		if(isLogin)
+		{
+			ll_action_button.setVisibility(View.GONE);
+			tv_user_name.setVisibility(View.VISIBLE);
+			getMyLoginInfo();
+		}else
+		{
+			ll_action_button.setVisibility(View.VISIBLE);
+			tv_user_name.setVisibility(View.GONE);
+		}
+	}
+	
+	private void getMyLoginInfo() {
+		if(DataManager.isLogin())
+		{
+			DataManager.getInstance().getInfoForUser(new DataManager.Callback() {
+				
+				@Override
+				public void onPre() {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void onPost(Result result) {
+					// TODO Auto-generated method stub
+					if(result != null)
+					{
+						RE_getInfoForUser getInfoForUser = (RE_getInfoForUser) result;
+//						iv_user_head.setImageUrl(getInfoForUser.getAvatarPicture(),R.drawable.icon_head_logo);
+						tv_user_name.setText(getInfoForUser.getNickname());
+					}
+				}
+				
+				@Override
+				public void onError() {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
 	}
 
 	@Override
@@ -154,6 +207,12 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 		default:
 			break;
 		}
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		onLoginStateChanged(DataManager.isLogin());
 	}
 
 }

@@ -252,6 +252,26 @@
             android:label="@string/app_name" 
             android:screenOrientation="portrait">
         </activity>
+        <!-- 搜索 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.SearchResultAtivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <!-- 忘记密码 -->
+        <activity
+            android:name="cn.crane.application.greenlife.ui.myaccount.ForgetPasswordActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
+        
+        <!-- TestConfig -->
+        <activity
+            android:name="cn.crane.application.greenlife.TestActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
+        </activity>
         
         
         <!--   Wechat   -->

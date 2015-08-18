@@ -7,8 +7,8 @@
 
     <cn.crane.framework.view.smartimage.SmartImageView 
         android:id="@+id/iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="46dip"
+        android:layout_height="46dip"
         android:scaleType="centerInside"
         android:src="@drawable/icon_bottom_dingdan"
         />

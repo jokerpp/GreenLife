@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import cn.crane.application.greenlife.utils.SharedPref;
+
 import android.app.ActivityManager;
 import android.app.Application;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -37,6 +39,7 @@ public class App extends Application {
 		instance = this;
 		packageName = getPackageName();
 		fDensity = getResources().getDisplayMetrics().density;
+		SharedPref.getInstance().init(this);
 //		UpLoadGPS.startAction(this);
 		
 	}

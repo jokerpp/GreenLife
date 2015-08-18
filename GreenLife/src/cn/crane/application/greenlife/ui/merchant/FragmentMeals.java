@@ -12,6 +12,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -86,6 +87,8 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 
 	private String merchantToken;
 	
+	private Button btnBack;
+	
 	@Override
 	protected int getLayoutId() {
 		// TODO Auto-generated method stub
@@ -111,6 +114,7 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 		lvFoodSelect = (ListView) findViewById(R.id.lv_food_select);
 		
 		llGrey = (LinearLayout) findViewById(R.id.ll_grey);
+		btnBack = (Button) findViewById(R.id.btn_back);
 	}
 
 	@Override
@@ -120,6 +124,7 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 		llShopCar.setOnClickListener(this);
 		tvClearShopCar.setOnClickListener(this);
 		llGrey.setOnClickListener(this);
+		btnBack.setOnClickListener(this);
 	}
 
 	@Override
@@ -182,6 +187,9 @@ public class FragmentMeals extends BaseFragment implements OnItemClickListener, 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.btn_back:
+			getActivity().finish();
+			break;
 		case R.id.tv_total_price:
 		case R.id.ll_grey:
 		case R.id.ll_shop_car:

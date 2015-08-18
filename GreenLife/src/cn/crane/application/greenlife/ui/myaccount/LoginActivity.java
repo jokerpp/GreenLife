@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import cn.crane.application.greenlife.App;
@@ -26,7 +27,9 @@ public class LoginActivity extends BaseActivity{
 	private EditText userName_edit;
 	private EditText password_edit;
 	
+	private Button btn_right;
 	private TextView login_button;
+	private TextView login_forgetpassword;
 	private Task_Post task_Post_login;
 	@Override
 	protected int getLayoutId() {
@@ -39,12 +42,16 @@ public class LoginActivity extends BaseActivity{
 		userName_edit = (EditText) findViewById(R.id.userName_edit);
 		password_edit = (EditText) findViewById(R.id.password_edit);
 		login_button = (TextView) findViewById(R.id.login_button);
+		login_forgetpassword = (TextView) findViewById(R.id.login_forgetpassword);
+		btn_right = (Button) findViewById(R.id.btn_right);
 	}
 
 	@Override
 	protected void bindViews() {
 		// TODO Auto-generated method stub
 		login_button.setOnClickListener(this);
+		login_forgetpassword.setOnClickListener(this);
+		btn_right.setOnClickListener(this);
 	}
 
 	@Override
@@ -62,6 +69,13 @@ public class LoginActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onClick(v);
 		switch (v.getId()) {
+		case R.id.btn_right:
+			RegisterActivity.show(this);
+			finish();
+			break;
+		case R.id.login_forgetpassword:
+			ForgetPasswordActivity.show(this);
+			break;
 		case R.id.login_button:
 			if(checkInput())
 			{
