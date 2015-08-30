@@ -1,11 +1,11 @@
 package cn.crane.application.greenlife;
 
 public class TestConfig {
-	public static boolean TEST = true;
+	public static boolean TEST = false;
 	/**
 	 * 登陆
 	 */
-	public static  boolean TEST_LOGIN = true;
+	public static  boolean TEST_LOGIN = false;
 	public static final String TEST_ACCOUNT = "18513816127";
 	public static final String TEST_PASSWORD = "111111";
 	

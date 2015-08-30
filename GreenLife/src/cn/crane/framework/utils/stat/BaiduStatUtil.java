@@ -5,6 +5,7 @@ import android.content.Context;
 
 
 import cn.crane.application.greenlife.Constant;
+import cn.crane.framework.utils.ChannelUtil;
 
 import com.baidu.mobstat.SendStrategyEnum;
 import com.baidu.mobstat.StatService;
@@ -19,8 +20,9 @@ public class BaiduStatUtil {
 
 	public static void initBaiduStatData(Context context) {
 		if (enableStat) {
-			StatService.setAppKey("18f2171b61");
-			StatService.setAppChannel("Baidu Market");
+			StatService.setAppKey("1d8f812109");
+//			StatService.setAppChannel("Baidu Market");
+			StatService.setAppChannel(ChannelUtil.getChannel(context, "GreenLife"));
 			StatService.setLogSenderDelayed(30);
 			StatService.setOn(context, StatService.EXCEPTION_LOG);
 			StatService.setSendLogStrategy(context, SendStrategyEnum.APP_START,

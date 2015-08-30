@@ -224,6 +224,7 @@
                 android:hint="@string/txt_register_password_hint"
                 android:padding="3dip"
                 android:singleLine="true"
+                android:password="true"
                 android:textColor="@color/txt_black"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -261,6 +262,7 @@
                 android:hint="@string/txt_register_password_again_hint"
                 android:padding="3dip"
                 android:singleLine="true"
+                android:password="true"
                 android:textColor="@color/txt_black"
                 android:textSize="14sp" />
         </LinearLayout>

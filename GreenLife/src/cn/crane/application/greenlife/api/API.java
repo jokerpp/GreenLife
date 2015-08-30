@@ -39,10 +39,15 @@ public class API {
 	
 	public static final String API_loginForUser = "zj/json/loginForUser.action";
 	public static final String API_regForUser = "zj/json/regForUser.action";
+	public static final String API_regForGreenLife = "zj/json/regForGreenLife.action";
+	
+	
 	public static final String API_sendValidateCode = "zj/json/sendValidateCode.action";
 	public static final String API_getInfoForUser = "zj/json/getInfoForUser.action";
 	public static final String API_updatePassForUser = "zj/json/updatePassForUser.action";
 	public static final String API_findForgetPassForUser = "zj/json/findForgetPassForUser.action";
+	public static final String API_findForgetPassForGreenLife = "zj/json/findForgetPassForGreenLife.action";
+	
 	public static final String API_getMyDeliveryAddressList = "zj/json/getMyDeliveryAddressList.action";
 	public static final String API_getMyDeliveryAddressDetails = "zj/json/getMyDeliveryAddressDetails.action";
 	public static final String API_addDeliveryAddress = "zj/json/addDeliveryAddress.action";

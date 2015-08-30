@@ -5,6 +5,7 @@ import android.widget.TextView;
 import cn.crane.application.greenlife.App;
 import cn.crane.application.greenlife.R;
 import cn.crane.framework.activity.BaseActivity;
+import cn.crane.framework.utils.stat.BaiduStatUtil;
 
 /**
  * @author Ruifeng.yu E-mail:xyyh0116@aliyun.com
@@ -33,6 +34,8 @@ public class SplashActivity extends BaseActivity {
 
 	@Override
 	protected void init() {
+		BaiduStatUtil.enableStat = true;
+		BaiduStatUtil.initBaiduStatData(getApplicationContext());
 		// TODO Auto-generated method stub
 		tvVersion.setText(App.getVersion());
 		new Handler().postDelayed(new Runnable() {

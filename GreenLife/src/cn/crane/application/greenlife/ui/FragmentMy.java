@@ -37,9 +37,11 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 	private LinearLayout myaccount_collect;
 	private LinearLayout myaccount_comments;
 	private LinearLayout myaccount_editpasswd;
+	private TextView tv_phone;
 	private TextView tv_user_name;
 	private MyaccountRoundImageView iv_user_head;
 	private View ll_action_button;
+	private LinearLayout myaccount_phone;
 
 	@Override
 	protected int getLayoutId() {
@@ -58,6 +60,8 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 		myaccount_collect = (LinearLayout) findViewById(R.id.myaccount_collect);
 		myaccount_comments = (LinearLayout) findViewById(R.id.myaccount_comments);
 		myaccount_editpasswd = (LinearLayout) findViewById(R.id.myaccount_editpasswd);
+		myaccount_phone = (LinearLayout) findViewById(R.id.myaccount_phone);
+		tv_phone = (TextView) findViewById(R.id.myaccount_item_text_phone);
 	}
 
 	@Override
@@ -107,6 +111,10 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 	protected void init() {
 		// TODO Auto-generated method stub
 		tv_user_name.setText("");
+		
+		myaccount_phone.setVisibility(View.VISIBLE);
+		
+		tv_phone.setText("客服 022-23775790");
 	}
 
 	private void loadViewForCode() {

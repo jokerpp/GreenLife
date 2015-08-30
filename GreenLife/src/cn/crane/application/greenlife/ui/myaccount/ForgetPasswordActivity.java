@@ -17,6 +17,7 @@ import cn.crane.application.greenlife.api.API;
 import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.model.Result;
+import cn.crane.application.greenlife.utils.VerifyUtils;
 import cn.crane.framework.activity.BaseActivity;
 
 /**
@@ -35,6 +36,8 @@ public class ForgetPasswordActivity extends BaseActivity {
 	private EditText et_password_again;
 	private TextView tv_next;
 	private TextView tv_get_captcha;
+	
+	private View ll_captcha;
 	private Task_Post task_Post_findForgetPassForUser;
 
 	@Override
@@ -54,6 +57,7 @@ public class ForgetPasswordActivity extends BaseActivity {
 		et_password_again = (EditText) findViewById(R.id.et_password_again);
 		tv_next = (TextView) findViewById(R.id.tv_next);
 		tv_get_captcha = (TextView) findViewById(R.id.tv_get_captcha);
+		ll_captcha = findViewById(R.id.ll_captcha);
 	}
 
 	@Override
@@ -67,7 +71,7 @@ public class ForgetPasswordActivity extends BaseActivity {
 	@Override
 	protected void init() {
 		// TODO Auto-generated method stub
-
+		ll_captcha.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -123,10 +127,14 @@ public class ForgetPasswordActivity extends BaseActivity {
 			App.showToast(et_mobile.getHint().toString());
 			return false;
 		}
-		if (TextUtils.isEmpty(et_captcha.getText().toString().trim())) {
-			App.showToast(et_captcha.getHint().toString());
+		if (!VerifyUtils.checkMobile(et_mobile.getText().toString().trim())) {
+			App.showToast(R.string.please_input_right_phone);
 			return false;
 		}
+//		if (TextUtils.isEmpty(et_captcha.getText().toString().trim())) {
+//			App.showToast(et_captcha.getHint().toString());
+//			return false;
+//		}
 		if (TextUtils.isEmpty(et_password.getText().toString().trim())) {
 			App.showToast(et_password.getHint().toString());
 			return false;
@@ -150,7 +158,7 @@ public class ForgetPasswordActivity extends BaseActivity {
 		map.put("oldPassord", et_password.getText().toString().trim());
 		map.put("newPassord", et_password_again.getText().toString().trim());
 		Task_Post.clearTask(task_Post_findForgetPassForUser);
-		task_Post_findForgetPassForUser = new Task_Post(map, API.API_findForgetPassForUser,
+		task_Post_findForgetPassForUser = new Task_Post(map, API.API_findForgetPassForGreenLife,
 				new Task_Post.OnPostEndListener() {
 			
 			@Override

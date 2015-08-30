@@ -278,10 +278,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/myaccount_index_item_text_paddingLeft"
-            android:text="客服   888-888-8888"
+            android:text="客服   022-23775790"
             android:textColor="#FF28b04e"
             android:textSize="@dimen/myaccount_index_item_textsize" />
    
      </LinearLayout> 
       <include layout="@layout/common_divider_magin"/> 
-</LinearLayout>
+</LinearLayout> 

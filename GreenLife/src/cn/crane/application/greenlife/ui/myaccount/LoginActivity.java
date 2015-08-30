@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONArray;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +19,7 @@ import cn.crane.application.greenlife.api.API_Contant;
 import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.model.result.RE_Login;
+import cn.crane.application.greenlife.utils.VerifyUtils;
 import cn.crane.framework.activity.BaseActivity;
 
 public class LoginActivity extends BaseActivity{
@@ -44,6 +44,8 @@ public class LoginActivity extends BaseActivity{
 		login_button = (TextView) findViewById(R.id.login_button);
 		login_forgetpassword = (TextView) findViewById(R.id.login_forgetpassword);
 		btn_right = (Button) findViewById(R.id.btn_right);
+		
+		userName_edit.setHint(R.string.txt_register_mobile_hint);
 	}
 
 	@Override
@@ -91,6 +93,10 @@ public class LoginActivity extends BaseActivity{
 	private boolean checkInput() {
 		if (TextUtils.isEmpty(userName_edit.getText().toString().trim())) {
 			App.showToast(userName_edit.getHint().toString());
+			return false;
+		}
+		if (!VerifyUtils.checkMobile(userName_edit.getText().toString().trim())) {
+			App.showToast(R.string.please_input_right_phone);
 			return false;
 		}
 		if (TextUtils.isEmpty(password_edit.getText().toString().trim())) {

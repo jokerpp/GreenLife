@@ -193,6 +193,7 @@
                     android:background="@color/white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:padding="0dip" >
 
                     <TextView
@@ -219,6 +220,7 @@
                 </LinearLayout>
                 <View
                     style="@style/line_gray"
+                    android:visibility="gone"
                     android:layout_marginBottom="10dip"
                     android:layout_marginTop="10dip" />
                 <LinearLayout

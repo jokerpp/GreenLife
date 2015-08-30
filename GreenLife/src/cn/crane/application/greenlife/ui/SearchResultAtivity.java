@@ -27,6 +27,7 @@ import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.model.item.MerchantItem;
 import cn.crane.application.greenlife.model.result.RE_getMerchantsList;
 import cn.crane.application.greenlife.ui.merchant.FoodListActivity;
+import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
 import cn.crane.framework.activity.BaseActivity;
 
 /**
@@ -93,6 +94,7 @@ public class SearchResultAtivity extends BaseActivity implements OnItemClickList
 		});
 		
 			adapter = new ListMerchantAdapter<MerchantItem>(this, arrMerchantItems);
+			adapter.setOnItemClickListener(onItemClickListener);
 			lv.setAdapter(adapter);
 			searchMerchantList();
 	}
@@ -192,6 +194,18 @@ public class SearchResultAtivity extends BaseActivity implements OnItemClickList
 			FoodListActivity.show(this, ((MerchantItem) object).getMerchantToken());
 		}
 	}
+	
+	private ListMerchantAdapter.OnItemClickListener onItemClickListener = new ListMerchantAdapter.OnItemClickListener() {
+
+		@Override
+		public void onItemClick(Object object) {
+			if(object instanceof MerchantItem)
+			{
+				FoodListActivity.show(SearchResultAtivity.this,((MerchantItem)object).getMerchantToken());
+
+			}
+		}
+	};
 	
 	@Override
 	protected void onDestroy() {

@@ -114,6 +114,7 @@
                 android:drawableLeft="@drawable/radio_selector"
                 android:drawablePadding="10dip"
                 android:gravity="center"
+                android:checked="true"
                 android:text="@string/txt_man" />
 
             <RadioButton
@@ -123,7 +124,6 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dip"
                 android:button="@null"
-                android:checked="true"
                 android:drawableLeft="@drawable/radio_selector"
                 android:drawablePadding="10dip"
                 android:gravity="center"

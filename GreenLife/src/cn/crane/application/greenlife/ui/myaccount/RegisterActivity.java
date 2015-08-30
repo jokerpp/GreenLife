@@ -20,6 +20,7 @@ import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.data.DataManager;
 import cn.crane.application.greenlife.model.Result;
 import cn.crane.application.greenlife.model.result.RE_Register;
+import cn.crane.application.greenlife.utils.VerifyUtils;
 import cn.crane.framework.activity.BaseActivity;
 
 /**
@@ -41,6 +42,8 @@ public class RegisterActivity extends BaseActivity {
 	private TextView tv_next;
 	private TextView tv_get_captcha;
 	private CheckBox check_agress;
+	
+	private View ll_captcha;
 	private Task_Post task_Post_register;
 	private Task_Post task_Post_getCaptcha;
 
@@ -64,6 +67,7 @@ public class RegisterActivity extends BaseActivity {
 		tv_tos = (TextView) findViewById(R.id.tv_tos);
 		tv_next = (TextView) findViewById(R.id.tv_next);
 		tv_get_captcha = (TextView) findViewById(R.id.tv_get_captcha);
+		ll_captcha = findViewById(R.id.ll_captcha);
 	}
 
 	@Override
@@ -78,7 +82,7 @@ public class RegisterActivity extends BaseActivity {
 	@Override
 	protected void init() {
 		// TODO Auto-generated method stub
-
+		ll_captcha.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -136,14 +140,18 @@ public class RegisterActivity extends BaseActivity {
 			App.showToast(et_mobile.getHint().toString());
 			return false;
 		}
+		if (!VerifyUtils.checkMobile(et_mobile.getText().toString().trim())) {
+			App.showToast(R.string.please_input_right_phone);
+			return false;
+		}
 //		if (!Validate.isUserName(etTel.getText().toString().trim())) {
 //			App.showToast(R.string.username_check);
 //			return false;
 //		}
-		if (TextUtils.isEmpty(et_captcha.getText().toString().trim())) {
-			App.showToast(et_captcha.getHint().toString());
-			return false;
-		}
+//		if (TextUtils.isEmpty(et_captcha.getText().toString().trim())) {
+//			App.showToast(et_captcha.getHint().toString());
+//			return false;
+//		}
 		if (TextUtils.isEmpty(et_password.getText().toString().trim())) {
 			App.showToast(et_password.getHint().toString());
 			return false;
@@ -178,7 +186,7 @@ public class RegisterActivity extends BaseActivity {
 		map.put("confirmPassword", pswConfirm);
 		map.put("userType", API_Contant.USERTYPE_USER);
 		Task_Post.clearTask(task_Post_register);
-		task_Post_register = new Task_Post(map, API.API_regForUser,
+		task_Post_register = new Task_Post(map, API.API_regForGreenLife,
 				new Task_Post.OnPostEndListener() {
 			
 			@Override

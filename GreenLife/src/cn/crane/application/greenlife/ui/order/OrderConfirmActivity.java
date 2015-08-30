@@ -290,7 +290,7 @@ public class OrderConfirmActivity extends BaseActivity {
 		map.put("payType", payType);
 		map.put("deliveryType", "1");
 		map.put("discountType", "0");
-		map.put("requestDeliveryDateTimeStr", "2015-07-01 12:45:00");
+		map.put("requestDeliveryDateTimeStr", "");
 		map.put("userNote", et_mark.getText().toString().trim());
 		
 		HashMap<String, String[]> mapArr = new HashMap<String, String[]>();
