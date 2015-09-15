@@ -28,7 +28,7 @@
             android:id="@+id/tv_title"
             style="@style/title_bar_text"
             android:layout_centerInParent="true"
-            android:text="@string/title_article_list"
+            android:text="@string/title_article_detail"
             android:textColor="@color/white"
             android:visibility="visible" />
 
@@ -43,15 +43,20 @@
             android:textColor="@color/txt_gray"
             android:visibility="gone" />
     </RelativeLayout>
-       <cn.crane.framework.view.smartimage.SmartImageView
-                android:id="@+id/iv_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:src="@drawable/test_index_image" />
-<WebView android:id="@+id/web"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+
+    <cn.crane.framework.view.smartimage.SmartImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dip"
+        android:scaleType="centerCrop"
+        android:src="@drawable/test_index_image" />
+
+    <WebView
+        android:id="@+id/web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,8 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-         
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -197,7 +197,7 @@ public class ListFoodAdapter extends BaseExpandableListAdapter implements OnClic
         if (item != null) {
 			tvTitle.setText(item.getDishesName());
 			tvDetail.setText(context.getString(R.string.format_food_detail,item.getSaleAmoun(),item.getUnit(),item.getRecommendAmount()));
-			tvPrice.setText(context.getString(R.string.txt_format_price, item.getPreferentialPrice()) + (TextUtils.isEmpty(item.getUnit()) ? "" :"/" + item.getUnit()));
+			tvPrice.setText(context.getString(R.string.txt_format_price, item.getPriceFormat()) + (TextUtils.isEmpty(item.getUnit()) ? "" :"/" + item.getUnit()));
 			tvKexuan.setVisibility(View.GONE);
 			tvSleep.setVisibility(View.GONE);
 			addMinus.setVisibility(View.VISIBLE);

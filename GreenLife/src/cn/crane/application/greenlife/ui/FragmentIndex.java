@@ -352,18 +352,18 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.tv_shilingzhong:
-			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_SHILINGZHONG);
-			break;
-		case R.id.tv_youhui:
-			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_YOUHUI);
-			break;
-		case R.id.tv_yuding:
-			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_YUDING);
-			break;
-		case R.id.tv_meishi:
-			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_MEISHI);
-			break;
+//		case R.id.tv_shilingzhong:
+//			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_SHILINGZHONG);
+//			break;
+//		case R.id.tv_youhui:
+//			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_YOUHUI);
+//			break;
+//		case R.id.tv_yuding:
+//			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_YUDING);
+//			break;
+//		case R.id.tv_meishi:
+//			MerchantListAtivity.show(getActivity(),API_Contant.MERCHANT_TYPE_MEISHI);
+//			break;
 		case R.id.btn_right:
 			TestActivity.show(getActivity());
 			break;
@@ -381,13 +381,13 @@ public class FragmentIndex extends BaseFragment implements OnClickListener, OnIt
 		case R.id.grid_category:
 			if(object instanceof GridCategoryItem)
 			{
-				MerchantListAtivity.show(getActivity(),((GridCategoryItem)object).getType());
+				MerchantListAtivity.show(getActivity(),((GridCategoryItem)object).getType(),"");
 			}
 			break;
 		case R.id.grid_category_auto:
 			if(object instanceof MerchantGroupItem)
 			{
-				MerchantListAtivity.show(getActivity(),((MerchantGroupItem)object).getMerchantGroupToken());
+				MerchantListAtivity.show(getActivity(),"",((MerchantGroupItem)object).getMerchantGroupToken());
 			}
 			break;
 		case R.id.lv:

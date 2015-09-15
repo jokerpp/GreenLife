@@ -214,6 +214,7 @@
        <string name="collect_food">产品</string>
        
         <string name="txt_reset_password">修改密码</string>
+    <string name="txt_password_old">旧密码</string>
     <string name="txt_password_new">新密码</string>
     
      <string name="txt_login">登录</string>
@@ -234,6 +235,7 @@
     <string name="txt_register_username_hint">请输入用户名称</string>
     <string name="txt_register_mobile_hint">请输入手机号码</string>
     <string name="txt_register_password_hint">请输入密码</string>
+    <string name="txt_register_password_old_hint">请输入旧密码</string>
     <string name="txt_register_password_again_hint">请输入确认密码</string>
     <string name="txt_register_get">获取</string>
     <string name="txt_register_agree">我已阅读并同意</string>
@@ -248,4 +250,7 @@
     <string name="change_psw_success">修改密码成功</string>
     <string name="order_commit_success">订单提交成功</string>
     <string name="please_input_right_phone">请输入正确的手机号</string>
+    <string name="toast_same_password">请输入相同的确认密码</string>
+    <string name="txt_kefu_format">客服 %s</string>
+    <string name="txt_kefu_tel">022-23775790</string>
 </resources>

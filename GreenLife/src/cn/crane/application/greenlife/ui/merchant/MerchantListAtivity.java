@@ -116,6 +116,7 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 	@Override
 	protected void init() {
 		type = getIntent().getStringExtra(API_Contant.TYPE);
+		token = getIntent().getStringExtra(API_Contant.MERCHANT_GROUP_TOKEN);
 		getMerchantsList();
 	}
 
@@ -150,7 +151,7 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 		map.put("merchantType", getMerchantType());
 		
 		map.put("orderType", "0");
-		map.put("merchantGroupToken", getMerchantType());
+		map.put("merchantGroupToken", getMerchantGroupToken());
 		map.put("conditionType", "0");
 		
 		map.put("longitude", DataManager.longitude);
@@ -244,6 +245,9 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 	private String getMerchantType() {
 		return type;
 	}
+	private String getMerchantGroupToken() {
+		return token;
+	}
 
 	private ListMerchantAdapter.OnItemClickListener onItemClickListener = new ListMerchantAdapter.OnItemClickListener() {
 
@@ -266,9 +270,10 @@ public class MerchantListAtivity extends BaseActivity implements OnItemClickList
 	}
 	
 
-	public static void show(Context context ,String type) {
+	public static void show(Context context ,String type,String merchantGroupToken) {
 		Intent intent = createIntent(context, MerchantListAtivity.class);
 		intent.putExtra(API_Contant.TYPE, type);
+		intent.putExtra(API_Contant.MERCHANT_GROUP_TOKEN, merchantGroupToken);
 		context.startActivity(intent);
 	}
 

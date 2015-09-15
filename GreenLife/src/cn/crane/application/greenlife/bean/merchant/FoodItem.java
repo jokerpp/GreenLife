@@ -137,6 +137,16 @@ public class FoodItem implements FoodType,Serializable{
 	}
 
 	public String getPreferentialPrice() {
+		return getPriceFormat();
+	}
+	
+	public String getPriceFormat() {
+		try {
+			return String.format("%.02f", iPrice);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return preferentialPrice;
 	}
 

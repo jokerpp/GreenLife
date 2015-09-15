@@ -24,7 +24,6 @@ import cn.crane.application.greenlife.api.Task_Post;
 import cn.crane.application.greenlife.model.item.NewsGroupItem;
 import cn.crane.application.greenlife.model.item.NewsItem;
 import cn.crane.application.greenlife.model.result.RE_getNewsList;
-import cn.crane.application.greenlife.ui.merchant.MerchantListAtivity;
 import cn.crane.framework.activity.BaseActivity;
 
 /**
@@ -101,6 +100,7 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 			
 			@Override
 			public void onPostEnd(String sResult) {
+				dismissLoadingDlg();
 				RE_getNewsList result = new RE_getNewsList();
 				try {
 					result = JSONArray.parseObject(sResult,
@@ -115,6 +115,7 @@ public class ArticleListActivity extends BaseActivity implements OnItemClickList
 			}
 		});
 		task_Post_getTopNews.execute();
+		displayLoadingDlg(R.string.loading);
 	}
 	
 	protected void refreshTopNewsUI(RE_getNewsList result) {

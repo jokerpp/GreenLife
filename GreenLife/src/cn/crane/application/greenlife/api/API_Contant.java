@@ -70,6 +70,7 @@ public class API_Contant {
 	
 	
 	public static final String TYPE = "type";
+	public static final String MERCHANT_GROUP_TOKEN = "merchant_group_token";
 
 	/**
 	 * Userinfo changed

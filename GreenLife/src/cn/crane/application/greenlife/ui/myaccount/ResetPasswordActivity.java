@@ -29,6 +29,7 @@ public class ResetPasswordActivity extends BaseActivity {
 	private TextView tv_title;
 	private Button btn_right;
 	private RelativeLayout ll_titleBar;
+	private EditText et_password_old;
 	private EditText et_password;
 	private EditText et_password_again;
 	private TextView tv_ok;
@@ -45,6 +46,7 @@ public class ResetPasswordActivity extends BaseActivity {
 		tv_title = (TextView) findViewById(R.id.tv_title);
 		btn_right = (Button) findViewById(R.id.btn_right);
 		ll_titleBar = (RelativeLayout) findViewById(R.id.ll_titleBar);
+		et_password_old = (EditText) findViewById(R.id.et_password_old);
 		et_password = (EditText) findViewById(R.id.et_password);
 		et_password_again = (EditText) findViewById(R.id.et_password_again);
 		tv_ok = (TextView) findViewById(R.id.tv_ok);
@@ -86,12 +88,17 @@ public class ResetPasswordActivity extends BaseActivity {
 	}
 	
 	private boolean checkInput() {
+		if (TextUtils.isEmpty(et_password_old.getText().toString().trim())) {
+			App.showToast(et_password_old.getHint().toString());
+			return false;
+		}
 		if (TextUtils.isEmpty(et_password.getText().toString().trim())) {
 			App.showToast(et_password.getHint().toString());
 			return false;
 		}
-		if (TextUtils.isEmpty(et_password_again.getText().toString().trim())) {
-			App.showToast(et_password_again.getHint().toString());
+		if (!et_password_again.getText().toString().trim().equalsIgnoreCase(et_password.getText().toString().trim()) ) {
+			et_password_again.findFocus();
+			App.showToast(R.string.toast_same_password);
 			return false;
 		}
 		return true;
@@ -103,8 +110,8 @@ public class ResetPasswordActivity extends BaseActivity {
 //		新密码	newPassord	必填	String
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userToken", DataManager.userToken);
-		map.put("oldPassord", et_password.getText().toString().trim());
-		map.put("newPassord", et_password_again.getText().toString().trim());
+		map.put("oldPassord", et_password_old.getText().toString().trim());
+		map.put("newPassord", et_password.getText().toString().trim());
 		Task_Post.clearTask(task_Post_updatePassForUser);
 		task_Post_updatePassForUser = new Task_Post(map, API.API_updatePassForUser,
 				new Task_Post.OnPostEndListener() {

@@ -1,6 +1,5 @@
 package cn.crane.application.greenlife.ui.article;
 
-import java.net.URLEncoder;
 import java.util.HashMap;
 
 import com.alibaba.fastjson.JSONArray;

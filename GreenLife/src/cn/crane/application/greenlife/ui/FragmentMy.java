@@ -13,12 +13,12 @@ import cn.crane.application.greenlife.model.Result;
 import cn.crane.application.greenlife.model.result.RE_getInfoForUser;
 import cn.crane.application.greenlife.ui.myaccount.LoginActivity;
 import cn.crane.application.greenlife.ui.myaccount.RegisterActivity;
-import cn.crane.application.greenlife.ui.myaccount.RegisterActivity_old;
 import cn.crane.application.greenlife.ui.myaccount.ResetPasswordActivity;
 import cn.crane.application.greenlife.ui.myaccount.address.MyAddressActivity;
 import cn.crane.application.greenlife.ui.myaccount.collect.MyCollectAtivity;
 import cn.crane.application.greenlife.ui.myaccount.comment.MyCommentsAtivity;
 import cn.crane.framework.fragment.BaseFragment;
+import cn.crane.framework.utils.MakePhoneCall;
 import cn.crane.framework.utils.myaccount.MyaccountRoundImageView;
 import cn.crane.framework.utils.myaccount.PullToZoomScrollViewEx;
 
@@ -82,6 +82,7 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 		myaccount_collect.setOnClickListener(this);
 		myaccount_comments.setOnClickListener(this);
 		myaccount_editpasswd.setOnClickListener(this);
+		myaccount_phone.setOnClickListener(this);
 
 		login.setOnClickListener(new OnClickListener() {
 
@@ -114,7 +115,9 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 		
 		myaccount_phone.setVisibility(View.VISIBLE);
 		
-		tv_phone.setText("客服 022-23775790");
+		tv_phone.setText(getString(R.string.txt_kefu_format,getString(R.string.txt_kefu_tel)));
+		
+		myaccount_phone.setTag(getString(R.string.txt_kefu_tel));
 	}
 
 	private void loadViewForCode() {
@@ -210,6 +213,13 @@ public class FragmentMy extends BaseFragment implements OnClickListener {
 				return;
 			}
 			ResetPasswordActivity.show(getActivity());
+			break;
+		case R.id.myaccount_phone:
+			if(v.getTag() instanceof String)
+			{
+				String tel = (String) v.getTag();
+				MakePhoneCall.call(getActivity(), tel);
+			}
 			break;
 
 		default:
